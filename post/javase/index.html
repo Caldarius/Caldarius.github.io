@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>JavaSE | Gridea</title>
-<link rel="shortcut icon" href="https://caldarius.github.io//favicon.ico?v=1619686506527">
+<link rel="shortcut icon" href="https://caldarius.github.io//favicon.ico?v=1620535195747">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://caldarius.github.io//styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="JavaSE | Gridea - Atom Feed" href="https://caldarius.github.io//atom.xml">
@@ -29,7 +29,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://caldarius.github.io/">
-  <img class="avatar" src="https://caldarius.github.io//images/avatar.png?v=1619686506527" alt="">
+  <img class="avatar" src="https://caldarius.github.io//images/avatar.png?v=1620535195747" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -334,6 +334,32 @@ public class RunTime{
         
 
         
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '4a7b87363e99fbdbfc6e',
+    clientSecret: 'b4b90a80882052a28bc850b624030c21f9649a87',
+    repo: 'Blogs-comment',
+    owner: 'Caldarius',
+    admin: ['Caldarius'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
 
         <div class="site-footer">
   Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
@@ -385,25 +411,6 @@ public class RunTime{
       });
 
     </script>
-	
-	<div id="comment"></div>
-	<span id="comment-count"></span>
-	<script src="/media/Valine.min.js"></script>
-	<script>
-	
-    comment_el = '#comment';
-    comment_count_el = 'span.comment-count';
-    new Valine({
-        el: comment_el,				// 评论区元素（要求div）
-        count_el: comment_count_el,    // 评论计数元素（要求span）
-        lang: 'zh-cn',							   // 语言（zh-cn或en）
-        app_id: 'xYaAsKnohuQS90fKXB36NAXx-MdYXbMMI',			    										   	
-        app_key: 'mKWYJWz9XoNweWXHnSNyEXEi',    										      
-        placeholder: 'Write a comment',  // 提示符
-        max_nest: 3,					// 嵌套评论深度，太大会影响加载速度
-        page_size: 5					// 分页大小
-    });
-</script>
 
   </body>
 </html>
