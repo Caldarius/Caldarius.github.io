@@ -1,22 +1,108 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://caldarius.github.io/</id>
-    <title>Caldarius</title>
-    <updated>2021-05-09T09:17:39.573Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://caldarius.github.io/"/>
-    <link rel="self" href="https://caldarius.github.io/atom.xml"/>
-    <subtitle>世界上只有一种英雄主义,就是看清生活的真相之后依然热爱生活。</subtitle>
-    <logo>https://caldarius.github.io/images/avatar.png</logo>
-    <icon>https://caldarius.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, Caldarius</rights>
-    <entry>
-        <title type="html"><![CDATA[MySQL基本操作（一）]]></title>
-        <id>https://caldarius.github.io/post/mysql-ji-ben-cao-zuo-yi/</id>
-        <link href="https://caldarius.github.io/post/mysql-ji-ben-cao-zuo-yi/">
-        </link>
-        <updated>2021-05-09T09:15:03.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="基本操作">基本操作</h2>
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MySQL基本操作（一） | Caldarius</title>
+<link rel="shortcut icon" href="https://caldarius.github.io//favicon.ico?v=1620551856169">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://caldarius.github.io//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="MySQL基本操作（一） | Caldarius - Atom Feed" href="https://caldarius.github.io//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="基本操作
+
+所有的语句要用分号结尾。
+discribe tablename;  --  显示表中所有的信息
+-- 是单行注释
+MySQL的关键字不区分大小写
+
+数据库操作
+
+
+dbe 为示例数据库
+
+
+创建数据库
+create databa..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://caldarius.github.io/">
+  <img class="avatar" src="https://caldarius.github.io//images/avatar.png?v=1620551856169" alt="">
+  </a>
+  <h1 class="site-title">
+    Caldarius
+  </h1>
+  <p class="site-description">
+    世界上只有一种英雄主义,就是看清生活的真相之后依然热爱生活。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              MySQL基本操作（一）
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-05-09
+              </span>
+              <span>
+                8 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="基本操作">基本操作</h2>
 <ul>
 <li>所有的语句要用分号结尾。</li>
 <li>discribe tablename;  --  显示表中所有的信息</li>
@@ -515,200 +601,157 @@
 </code></pre>
 <p>分组之后where失效，用having替代where，况且where应该在group by 之前</p>
 <p>不用组函数的分组是没有意义的</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[JavaSE]]></title>
-        <id>https://caldarius.github.io/post/javase/</id>
-        <link href="https://caldarius.github.io/post/javase/">
-        </link>
-        <updated>2021-04-29T07:35:48.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="java-se三">Java SE(三)</h1>
-<h2 id="面向对象oop">面向对象(OOP)</h2>
-<h3 id="面向过程pop-面向对象oop">面向过程（POP）&amp; 面向对象(OOP)</h3>
-<ul>
-<li>
-<p>面向过程，强调的是功能行为，以函数为最小单位，考虑怎么做。</p>
-</li>
-<li>
-<p>面向对象，将功能封装进对 象，强调具备了功能的对象，以类/对象为最小单位，考虑谁来做。</p>
-</li>
-<li>
-<p>面向对象更贴近人类在日常的思维逻辑中采用的思想方法与原则，如 抽象、分类、继承、聚合、多态等。</p>
-<ul>
-<li>
-<p>经典例子：</p>
-<p>如何把大象装进冰箱？</p>
-<ul>
-<li>
-<p>面向过程：<br>
-{<br>
-打开冰箱{</p>
-<p>……</p>
-<p>……</p>
-<p>}</p>
-<p>把大象装进冰箱 {</p>
-<p>……</p>
-<p>……</p>
-<p>}</p>
-<p>把冰箱门关住{</p>
-<p>……</p>
-<p>……</p>
-<p>}</p>
-</li>
-<li>
-<p>面向对象：</p>
-</li>
-</ul>
-<p>{</p>
-<p>人{</p>
-<pre><code>	 打开（冰箱）{
-</code></pre>
-<p>冰箱.开门(); }</p>
-</li>
-</ul>
-<p>操作(大象){<br>
-大象.进入(冰箱); }<br>
-关闭(冰箱){</p>
-<pre><code>				冰箱.关门();
-  
-			} 
-  
-	}
-  
-冰箱{
-  
-	开门( ){ }      
-</code></pre>
-<p>关门( ){ }</p>
-<pre><code>}
-  
-大象{
-  
-	进入(冰箱){
-  
-	}
-</code></pre>
-<p>}</p>
-</li>
-<li>
-<p>面向对象是对面向过程的封装，屏蔽了实现的过程，保留了功能调用。</p>
-</li>
-</ul>
-<h3 id="oop思想概述">OOP思想概述</h3>
-<h4 id="三四大特征">三（四）大特征</h4>
-<ul>
-<li>
-<p>抽象（Abstract）</p>
-</li>
-<li>
-<p>封装 (Encapsulation)</p>
-</li>
-<li>
-<p>继承 (Inheritance)</p>
-</li>
-<li>
-<p>多态 (Polymorphism)</p>
-</li>
-</ul>
-<h4 id="概述">概述</h4>
-<ul>
-<li>
-<p>根据问题需要，选择问题所对应的实体。</p>
-<ul>
-<li>这个实体通常是现实世界有的，建议解决问题时向现实世界靠拢。同时，也要发挥自己的能动作用，合理构建理想事物</li>
-</ul>
-</li>
-<li>
-<p>从实体中寻找解决问题相关的属性和功能，这些属性和功能就形成了概念世界中的类。</p>
-</li>
-<li>
-<p>把抽象的实体用计算机语言进行描述，形成计算机世界中类的定义。即借助某种程序 语言，把类构造成计算机能够识别和处理的数据结构和算法。分别对应类的属性和行为。</p>
-</li>
-<li>
-<p>将类实例化成计算机世界中的对象。对象是我们解决问题的最终工具。</p>
-<h3 id="java-的-类class-与-对象object">Java 的 类(Class) 与 对象(Object)</h3>
-</li>
-</ul>
-<h4 id="二者的关系">二者的关系</h4>
-<ul>
-<li>图纸和产品的关系。</li>
-<li>抽象和实体的关系。对象也成为类的实例，创建对象的过程也叫做类的实例化。</li>
-<li>类的设计是面向对象程序设计的重点。</li>
-</ul>
-<h4 id="类的构成">类的构成</h4>
-<h5 id="属性">属性</h5>
-<p>对应类中的成员变量，用于描述某一类实体的属性。是构成程序的数据结构。</p>
-<h5 id="行为">行为</h5>
-<p>对应类中的成员方法，用于描述一类实体的行为。是构成程序的算法。</p>
-<p><strong>数据结构+算法=程序</strong></p>
-<h4 id="语法格式">语法格式</h4>
-<pre><code class="language-java">public/protected/private class class_name{
-    //属性；
-    //方法；
-}
 
-// 例如：
-public class Student{
-    // 属性
-    String Sno;
-    String name;
-    
-    //方法
-    public void hello(){
-        System.out.println(&quot;Hello miao~&quot;);
-    }
-}
-// class student 会作为后续的例子
-</code></pre>
-<h4 id="对象的创建和使用">对象的创建和使用</h4>
-<pre><code class="language-java">class_name object_name = new class_name(); //类名 对象名 = new 类名();
-object_name.object_member; // 使用  对象名.对象成员  的方式访问对象成员（属性和方法）
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C">基本操作</a>
+<ul>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C">数据库操作</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%88%97%E7%B1%BB%E5%9E%8B">数据库的列类型</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%AD%97%E6%AE%B5%E5%B1%9E%E6%80%A7">数据库的字段属性</a></li>
+</ul>
+</li>
+<li><a href="#ddl">DDL</a>
+<ul>
+<li><a href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8">创建数据库表</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%9A%84%E7%B1%BB%E5%9E%8B">数据表的类型</a>
+<ul>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BC%95%E6%93%8E">数据库引擎</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E5%92%8C%E5%88%A0%E9%99%A4%E8%A1%A8">修改和删除表</a></li>
+</ul>
+</li>
+<li><a href="#mysql%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86">MySQL数据管理</a>
+<ul>
+<li><a href="#%E5%A4%96%E9%94%AE">外键</a></li>
+</ul>
+</li>
+<li><a href="#dml">DML</a>
+<ul>
+<li><a href="#%E6%B7%BB%E5%8A%A0insert">添加（insert）</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9update">修改（update）</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4">删除</a></li>
+</ul>
+</li>
+<li><a href="#dql">DQL</a>
+<ul>
+<li><a href="#select">select</a></li>
+<li><a href="#%E5%8E%BB%E9%87%8D">去重</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%A1%A8%E8%BE%BE%E5%BC%8F">数据库的表达式</a></li>
+<li><a href="#where">where</a></li>
+<li><a href="#%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2">模糊查询</a></li>
+<li><a href="#%E8%81%94%E8%A1%A8%E6%9F%A5%E8%AF%A2">联表查询</a></li>
+<li><a href="#%E8%87%AA%E8%BF%9E%E6%8E%A5">自连接</a></li>
+<li><a href="#%E5%88%86%E9%A1%B5%E5%92%8C%E6%8E%92%E5%BA%8F">分页和排序</a></li>
+<li><a href="#%E6%9D%A1%E4%BB%B6%E4%B9%A6%E5%86%99%E9%A1%BA%E5%BA%8F">条件书写顺序</a></li>
+<li><a href="#%E5%AD%90%E6%9F%A5%E8%AF%A2">子查询</a></li>
+<li><a href="#%E5%87%BD%E6%95%B0">函数</a></li>
+<li><a href="#%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0">聚合函数</a></li>
+<li><a href="#%E5%88%86%E7%BB%84">分组</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
-public class RunTime{
-    public static void main(String args[]){
-        Student student = new Student();
-        student.Sno = &quot;201903010121&quot;;
-        student.hello();
-    }
-}
-</code></pre>
-<ul>
-<li>如果创建了一个类的 多个对象，对于类中 定义的属性，每个对 象都拥有各自的一套 副本，且互不干扰。后续的内存部分会介绍原理。</li>
-</ul>
-<h5 id="匿名对象">匿名对象</h5>
-<h5 id="类的访问机制">类的访问机制</h5>
-<ul>
-<li>在一个类中的访问机制：类中的方法可以直接访问类中的成员变量。</li>
-<li>在不同类中的访问机制：先创建要访问类的对象，再用对象访问类中 定义的成员。</li>
-</ul>
-<h4 id="属性-2">属性</h4>
-<ul>
-<li>
-<p>成员变量</p>
-<ul>
-<li>类变量</li>
-</ul>
-</li>
-<li>
-<p>局部变量</p>
-</li>
-<li>
-<p>初始赋值为0</p>
-</li>
-</ul>
-<h4 id="方法-行为">方法 —— 行为</h4>
-<ul>
-<li>声明</li>
-<li>参数列表的返回值</li>
-<li>不允许嵌套</li>
-<li>方法重载</li>
-<li>传值机制</li>
-<li>递归方法(recursion)</li>
-</ul>
-<h3 id="封装">封装</h3>
-<h3 id="继承">继承</h3>
-<h3 id="多态">多态</h3>
-]]></content>
-    </entry>
-</feed>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://caldarius.github.io/post/javase/">
+              <h3 class="post-title">
+                JavaSE
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '4a7b87363e99fbdbfc6e',
+    clientSecret: 'b4b90a80882052a28bc850b624030c21f9649a87',
+    repo: 'Blogs-comment',
+    owner: 'Caldarius',
+    admin: ['Caldarius'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://caldarius.github.io//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+
+  </body>
+</html>
