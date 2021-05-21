@@ -1,0 +1,445 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>关系数据库理论（二） | Caldarius</title>
+<link rel="shortcut icon" href="https://caldarius.github.io//favicon.ico?v=1621599387532">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://caldarius.github.io//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="关系数据库理论（二） | Caldarius - Atom Feed" href="https://caldarius.github.io//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="关系数据库理论（二）
+范式
+定义
+
+范式是符合某一种级别的关系模式的集合。定义的是规范。
+
+种类
+
+第一范式 (1NF)
+第二范式 (2NF)
+第三范式 (3NF)
+BC范式 (BCNF)
+……
+
+联系
+低级别的范式包含高级别的范式~
+规范..." />
+    <meta name="keywords" content="MySQL" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://caldarius.github.io/">
+  <img class="avatar" src="https://caldarius.github.io//images/avatar.png?v=1621599387532" alt="">
+  </a>
+  <h1 class="site-title">
+    Caldarius
+  </h1>
+  <p class="site-description">
+    世界上只有一种英雄主义,就是看清生活的真相之后依然热爱生活。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              关系数据库理论（二）
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-05-21
+              </span>
+              <span>
+                6 min read
+              </span>
+              
+                <a href="https://caldarius.github.io/tag/BhQcioltu/" class="post-tag">
+                  # MySQL
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="关系数据库理论二">关系数据库理论（二）</h1>
+<h2 id="范式">范式</h2>
+<h3 id="定义">定义</h3>
+<ul>
+<li>范式是符合某一种级别的关系模式的集合。定义的是规范。</li>
+</ul>
+<h3 id="种类">种类</h3>
+<ul>
+<li>第一范式 (1NF)</li>
+<li>第二范式 (2NF)</li>
+<li>第三范式 (3NF)</li>
+<li>BC范式 (BCNF)</li>
+<li>……</li>
+</ul>
+<h3 id="联系">联系</h3>
+<p>低级别的范式包含高级别的范式~</p>
+<h3 id="规范化">规范化</h3>
+<p>一个低级别范式的关系模式，通过模式分解转化为若干高一级范式的关系模式的集合 的过程。</p>
+<h3 id="第一范式-1nf">第一范式 (1NF)</h3>
+<h4 id="定义-2">定义</h4>
+<p>如果一个关系模式R的所有属性都是不可分的 基本数据项，则R∈1NF。</p>
+<h4 id="意义">意义</h4>
+<ul>
+<li>第一范式是对关系模式的最起码的要求。不满 足第一范式的数据库模式不能称为关系数据库。</li>
+<li>但是满足第一范式的关系模式并不一定是一个 好的关系模式。我们需要更细致的规范。</li>
+</ul>
+<h3 id="第二范式-2nf">第二范式 (2NF)</h3>
+<h4 id="引例">引例</h4>
+<p>关系模式 SLC(Sno, Sdept, Sloc, Cno, Grade) ，Sloc为学生住处，假设每个系的学生住在同一 个地方。</p>
+<p>FD（函数依赖）：</p>
+<p>​	(Sno, Cno) f-&gt;Grade</p>
+<p>​	 Sno -&gt; Sdept</p>
+<p>​	(Sno, Cno) -&gt; Sdept</p>
+<p>​	Sno -&gt; Sloc</p>
+<p>​	(Sno, Cno) -&gt; Sloc</p>
+<p>​	Sdept -&gt; Sloc</p>
+<p><strong>SLC：</strong></p>
+<table>
+<thead>
+<tr>
+<th>Sno</th>
+<th>Sdept</th>
+<th>Sloc</th>
+<th>Cno</th>
+<th>Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="分析">分析</h5>
+<ul>
+<li>
+<p>SLC的码为(Sno, Cno)。</p>
+</li>
+<li>
+<p>非主属性Sdept和Sloc部分函数依赖于码(Sno, Cno)</p>
+</li>
+<li>
+<p>插入异常</p>
+<p>假设Sno＝0121，Sdept＝IS，Sloc＝N 的学生还未选课，因课程号是主 属性，因此该学生的信息无法插入SLC。</p>
+</li>
+<li>
+<p>删除异常</p>
+<p>假定某个学生本来只选修了3号课程这一门课。现在因身体不适，他连3 号课程也不选修了。因课程号是主属性，此操作将导致该学生信息的 整个元组都要删除。</p>
+</li>
+<li>
+<p>数据冗余度大</p>
+<p>如果一个学生选修了10门课程，那么他的Sdept和Sloc值就要重复 存储了10次。</p>
+</li>
+<li>
+<p>修改复杂</p>
+<p>如学生转系，在修改此学生元组的Sdept值的同时，还可能需 要修改住处（Sloc）。如果这个学生选修了K门课，则必须无遗 漏地修改K个元组中全部Sdept、Sloc信息。</p>
+</li>
+<li>
+<p>原因</p>
+<p>Sdept、 Sloc部分函数依赖于码。</p>
+</li>
+<li>
+<p>解决方法</p>
+<p>SLC分解为两个关系模式，以消除这些部分函数依赖。（ 关系模式分解将在（四）中详细写明 ）</p>
+<p>SC（Sno， Cno， Grade）</p>
+<p>SL（Sno， Sdept， Sloc）</p>
+</li>
+</ul>
+<h4 id="定义-3">定义</h4>
+<ul>
+<li>若关系模式R∈1NF，并且每一个非主属性都 完全函数依赖于R的码，则R∈2NF。</li>
+</ul>
+<h4 id="作用及缺陷">作用及缺陷</h4>
+<ul>
+<li>采用投影分解法将一个1NF的关系分解为多个2NF的关 系，可以在一定程度上减轻原1NF关系中存在的插入 异常、删除异常、数据冗余度大、修改复杂等问题。</li>
+<li>将一个1NF关系分解为多个2NF的关系，并不能完全消 除关系模式中的各种异常情况和数据冗余。</li>
+</ul>
+<h3 id="3nf">3NF</h3>
+<h4 id="引例-2">引例</h4>
+<ul>
+<li>
+<p>2NF关系模式SL(Sno, Sdept, Sloc)中：</p>
+<ul>
+<li>
+<p>函数依赖：</p>
+<p>Sno -&gt; Sdept</p>
+<p>Sdept -&gt; Sloc</p>
+<p>Sloc 传递函数依赖于 Sloc 。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>解决方法：</p>
+<ul>
+<li>
+<p>采用投影分解法，把SL分解为两个关系模式，以消除传递函数 依赖：</p>
+<p>SD（Sno， Sdept）</p>
+<p>DL（Sdept， Sloc）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="定义-4">定义</h4>
+<ul>
+<li>
+<p>关系模式R 中若不存在这样的码X、 属性组Y及非主属性Z（Z 不包含于 Y）, 使得X-&gt; Y，Y -&gt; Z，成 立，    Y -&gt; X，则称R ∈ 3NF。</p>
+</li>
+<li>
+<p>即：若R∈3NF，则R的每一个非主属性既不部分函数依赖于 候选码也不传递函数依赖于候选码。</p>
+<h4 id="作用及缺陷-2">作用及缺陷</h4>
+<p>将一个2NF关系分解为多个3NF的关系后，并不能完全消 除关系模式中的各种异常情况和数据冗余。</p>
+</li>
+</ul>
+<h3 id="bcnf">BCNF</h3>
+<h4 id="定义-5">定义</h4>
+<ul>
+<li>
+<p>设关系模式R∈1NF，如果对于R的每个 函数依赖X -&gt; Y，若Y不属于X，则X必含有候选码，那么 R∈BCNF。</p>
+</li>
+<li>
+<p>即：若R∈BCNF</p>
+<ul>
+<li>每一个决定属性集（因素）都包含（候选）码。</li>
+<li>R中的所有属性（主，非主属性）都完全函数依赖于码。</li>
+<li>R∈3NF.</li>
+</ul>
+</li>
+</ul>
+<h4 id="性质">性质</h4>
+<ul>
+<li>所有非主属性都完全函数依赖于每个候选码。</li>
+<li>所有主属性都完全函数依赖于每个不包含它的 候选码。</li>
+<li>没有任何属性完全函数依赖于非码的任何一组 属性</li>
+</ul>
+<h4 id="例子">例子</h4>
+<p>在关系模式STJ（S，T，J）中，S表示学生，T表示教 师，J表示课程。</p>
+<p>(S，J) -&gt; T，(S，T) -&gt; J，T -&gt; J</p>
+<p>STJ∈3NF (S，J)和(S，T)都可以作为候选码 S、T、J都是主属性</p>
+<p>STJ不属于BCNF T -&gt; J，T是决定属性集，T不是候选码</p>
+<p><strong>解决方法：将STJ分解为二个关系模式：</strong></p>
+<p>​	 <strong>ST(S，T) ∈ BCNF， TJ(T，J)∈ BCNF</strong></p>
+<h3 id="多值依赖">多值依赖</h3>
+<p>PS：多值依赖以及第四范式笔者正在寻找更恰当的描述方式，找到之后会第一时间更新。</p>
+<h3 id="第四范式">第四范式</h3>
+<h3 id="规范化基本步骤">规范化基本步骤</h3>
+<ol>
+<li>1NF  消除非主属性对码的部分函数依赖。</li>
+</ol>
+<h4 id="消除决定属性集-非码-的非平凡函数依赖">消除决定属性集 非码 的非平凡函数依赖</h4>
+<ol start="2">
+<li>2NF 消除非主属性对码的传递函数依赖。</li>
+<li>3NF 消除主属性对码的部分和传递函数依赖。</li>
+<li>BCNF 消除非平凡且非函数依赖的多值依赖。</li>
+</ol>
+<h4 id="基本思想">基本思想</h4>
+<ul>
+<li>消除不合适的数据依赖的各关系模式达到某种程度的“分 离”。</li>
+<li>采用“一事一地”的模式设计原则。</li>
+<li>所谓规范化实质上是概念的单一化。</li>
+<li>规范化程度高不等于关系模式好，在实际应用中我们常常会在实际需求与规范化中做 trade off。笔者认为，这个妥协的过程广泛地存在于工程应用中。</li>
+<li>在设计数据库模式结构时，必须对现实世界的实际情况和用 户应用需求作进一步分析，确定一个合适的、能够反映现实 世界的模式。</li>
+<li>规范化过程可以在其中任何一步终止。</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E7%90%86%E8%AE%BA%E4%BA%8C">关系数据库理论（二）</a>
+<ul>
+<li><a href="#%E8%8C%83%E5%BC%8F">范式</a>
+<ul>
+<li><a href="#%E5%AE%9A%E4%B9%89">定义</a></li>
+<li><a href="#%E7%A7%8D%E7%B1%BB">种类</a></li>
+<li><a href="#%E8%81%94%E7%B3%BB">联系</a></li>
+<li><a href="#%E8%A7%84%E8%8C%83%E5%8C%96">规范化</a></li>
+<li><a href="#%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F-1nf">第一范式 (1NF)</a>
+<ul>
+<li><a href="#%E5%AE%9A%E4%B9%89-2">定义</a></li>
+<li><a href="#%E6%84%8F%E4%B9%89">意义</a></li>
+</ul>
+</li>
+<li><a href="#%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F-2nf">第二范式 (2NF)</a>
+<ul>
+<li><a href="#%E5%BC%95%E4%BE%8B">引例</a>
+<ul>
+<li><a href="#%E5%88%86%E6%9E%90">分析</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AE%9A%E4%B9%89-3">定义</a></li>
+<li><a href="#%E4%BD%9C%E7%94%A8%E5%8F%8A%E7%BC%BA%E9%99%B7">作用及缺陷</a></li>
+</ul>
+</li>
+<li><a href="#3nf">3NF</a>
+<ul>
+<li><a href="#%E5%BC%95%E4%BE%8B-2">引例</a></li>
+<li><a href="#%E5%AE%9A%E4%B9%89-4">定义</a></li>
+<li><a href="#%E4%BD%9C%E7%94%A8%E5%8F%8A%E7%BC%BA%E9%99%B7-2">作用及缺陷</a></li>
+</ul>
+</li>
+<li><a href="#bcnf">BCNF</a>
+<ul>
+<li><a href="#%E5%AE%9A%E4%B9%89-5">定义</a></li>
+<li><a href="#%E6%80%A7%E8%B4%A8">性质</a></li>
+<li><a href="#%E4%BE%8B%E5%AD%90">例子</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A4%9A%E5%80%BC%E4%BE%9D%E8%B5%96">多值依赖</a></li>
+<li><a href="#%E7%AC%AC%E5%9B%9B%E8%8C%83%E5%BC%8F">第四范式</a></li>
+<li><a href="#%E8%A7%84%E8%8C%83%E5%8C%96%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4">规范化基本步骤</a>
+<ul>
+<li><a href="#%E6%B6%88%E9%99%A4%E5%86%B3%E5%AE%9A%E5%B1%9E%E6%80%A7%E9%9B%86-%E9%9D%9E%E7%A0%81-%E7%9A%84%E9%9D%9E%E5%B9%B3%E5%87%A1%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96">消除决定属性集 非码 的非平凡函数依赖</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3">基本思想</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://caldarius.github.io/post/guan-xi-shu-ju-ku-li-lun-yi/">
+              <h3 class="post-title">
+                关系数据库理论（一）
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '4a7b87363e99fbdbfc6e',
+    clientSecret: 'b4b90a80882052a28bc850b624030c21f9649a87',
+    repo: 'Blogs-comment',
+    owner: 'Caldarius',
+    admin: ['Caldarius'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://caldarius.github.io//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+
+  </body>
+</html>

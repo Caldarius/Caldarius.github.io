@@ -1,0 +1,352 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>数据库安全性 | Caldarius</title>
+<link rel="shortcut icon" href="https://caldarius.github.io//favicon.ico?v=1621599387532">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://caldarius.github.io//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="数据库安全性 | Caldarius - Atom Feed" href="https://caldarius.github.io//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="数据库安全性
+数据库安全性
+问题
+
+数据库的特点之一是数据共享，但是数据共享必然带来安全性问题。
+数据库系统中的数据共享不能是无条件的共享。
+
+数据库安全性控制
+用户表示与鉴别
+系统提供的最外层的安全保护措施。
+
+
+用户标识
+系统核对口令以..." />
+    <meta name="keywords" content="MySQL" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://caldarius.github.io/">
+  <img class="avatar" src="https://caldarius.github.io//images/avatar.png?v=1621599387532" alt="">
+  </a>
+  <h1 class="site-title">
+    Caldarius
+  </h1>
+  <p class="site-description">
+    世界上只有一种英雄主义,就是看清生活的真相之后依然热爱生活。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              数据库安全性
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-05-21
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://caldarius.github.io/tag/BhQcioltu/" class="post-tag">
+                  # MySQL
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="数据库安全性">数据库安全性</h1>
+<h2 id="数据库安全性-2">数据库安全性</h2>
+<h3 id="问题">问题</h3>
+<ol>
+<li>数据库的特点之一是数据共享，但是数据共享必然带来安全性问题。</li>
+<li>数据库系统中的数据共享不能是无条件的共享。</li>
+</ol>
+<h3 id="数据库安全性控制">数据库安全性控制</h3>
+<h4 id="用户表示与鉴别">用户表示与鉴别</h4>
+<p><strong>系统提供的最外层的安全保护措施</strong>。</p>
+<ul>
+<li>
+<p>用户标识</p>
+<p>系统核对口令以鉴别用户身份。为了防止口令的窃取会有各种防御措施来预防。典型的有生物识别，口令计算函数。</p>
+</li>
+</ul>
+<h4 id="存取控制">存取控制</h4>
+<p><strong>作用在DBMS级别的安全措施</strong></p>
+<ul>
+<li>定义用户权限</li>
+<li>合法权限的检查</li>
+</ul>
+<h5 id="实现方法">实现方法</h5>
+<ul>
+<li>通过SQL 的 <strong>GRANT REVOKE</strong> 语句实现。</li>
+<li>用户权限组成：
+<ul>
+<li>数据对象</li>
+<li>操作类型</li>
+</ul>
+</li>
+<li>授权：定义用户可以在哪些数据库对象上镜像哪些类型的操作</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>操作类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>模式（schema）</td>
+<td>CREATE SCHEMA</td>
+</tr>
+<tr>
+<td>基本表（table）</td>
+<td>CREATE TABLE，ALTER TABLE</td>
+</tr>
+<tr>
+<td>视图（view）</td>
+<td>CREATE VIEW</td>
+</tr>
+<tr>
+<td>索引（index'）</td>
+<td>CREATE INDEX</td>
+</tr>
+<tr>
+<td>数据（基本表和视图）</td>
+<td>SELECT，INSERT，UPDATE，DELETE，REFERENCES，ALL PRIVILEGES</td>
+</tr>
+<tr>
+<td>属性列</td>
+<td>SELECT，INSERT，UPDATE， REFERENCES，ALL PRIVILEGES</td>
+</tr>
+</tbody>
+</table>
+<h3 id="操作语句">操作语句</h3>
+<h4 id="grant">GRANT</h4>
+<p>GRANT &lt;权限&gt;[,&lt;权限&gt;]...</p>
+<p>​    [ON &lt;对象类型&gt; &lt;对象名&gt;]</p>
+<p>​    TO &lt;用户&gt;[,&lt;用户&gt;]...</p>
+<p>​    [WITH GRANT OPTION];</p>
+<h5 id="授权">授权</h5>
+<ul>
+<li>DBA。</li>
+<li>是数据库的创建者。</li>
+<li>拥有权限的用户。</li>
+</ul>
+<h5 id="接受">接受</h5>
+<ul>
+<li>一个或者多个具体的用户。</li>
+<li>PUBLIC  （全体用户）。</li>
+</ul>
+<h5 id="with-grant-option">WITH GRANT OPTION;</h5>
+<ul>
+<li>指定，可以再授予。</li>
+<li>没有，不能传播。</li>
+<li>不允许循环授权，A-&gt;B-&gt;C-&gt;A</li>
+</ul>
+<pre><code class="language-mysql">grant select,insert
+	on table `student`,`grade`
+	to `t1`,`t2`;
+	
+grant all priviliges
+	on table student,course
+	to t1,t2;
+	
+grant select
+	on table student,grade
+	to public;
+	
+grant all priviliges
+	on table student,course
+	to t1,t2
+	with grant option;
+</code></pre>
+<h4 id="revoke">REVOKE</h4>
+<p><strong>除  TO-&gt;FROM   基本语法格式与 GRANT 语句相同，不再赘述</strong></p>
+<ul>
+<li>对于权限传播的用户权限收回在FROM语句之后+“CASCADE”即可。</li>
+</ul>
+<pre><code class="language-mysql">revoke all priviliges
+	on table student
+	from t1
+	cascade
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E5%85%A8%E6%80%A7">数据库安全性</a>
+<ul>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E5%85%A8%E6%80%A7-2">数据库安全性</a>
+<ul>
+<li><a href="#%E9%97%AE%E9%A2%98">问题</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E5%85%A8%E6%80%A7%E6%8E%A7%E5%88%B6">数据库安全性控制</a>
+<ul>
+<li><a href="#%E7%94%A8%E6%88%B7%E8%A1%A8%E7%A4%BA%E4%B8%8E%E9%89%B4%E5%88%AB">用户表示与鉴别</a></li>
+<li><a href="#%E5%AD%98%E5%8F%96%E6%8E%A7%E5%88%B6">存取控制</a>
+<ul>
+<li><a href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95">实现方法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E6%93%8D%E4%BD%9C%E8%AF%AD%E5%8F%A5">操作语句</a>
+<ul>
+<li><a href="#grant">GRANT</a>
+<ul>
+<li><a href="#%E6%8E%88%E6%9D%83">授权</a></li>
+<li><a href="#%E6%8E%A5%E5%8F%97">接受</a></li>
+<li><a href="#with-grant-option">WITH GRANT OPTION;</a></li>
+</ul>
+</li>
+<li><a href="#revoke">REVOKE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://caldarius.github.io/post/guan-xi-shu-ju-ku-li-lun-er/">
+              <h3 class="post-title">
+                关系数据库理论（二）
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '4a7b87363e99fbdbfc6e',
+    clientSecret: 'b4b90a80882052a28bc850b624030c21f9649a87',
+    repo: 'Blogs-comment',
+    owner: 'Caldarius',
+    admin: ['Caldarius'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://caldarius.github.io//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+
+  </body>
+</html>

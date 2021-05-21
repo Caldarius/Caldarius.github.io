@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://caldarius.github.io/</id>
     <title>Caldarius</title>
-    <updated>2021-05-09T12:56:20.505Z</updated>
+    <updated>2021-05-21T12:16:36.981Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://caldarius.github.io/"/>
     <link rel="self" href="https://caldarius.github.io/atom.xml"/>
@@ -10,6 +10,695 @@
     <logo>https://caldarius.github.io/images/avatar.png</logo>
     <icon>https://caldarius.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Caldarius</rights>
+    <entry>
+        <title type="html"><![CDATA[数据库完整性]]></title>
+        <id>https://caldarius.github.io/post/shu-ju-ku-wan-zheng-xing/</id>
+        <link href="https://caldarius.github.io/post/shu-ju-ku-wan-zheng-xing/">
+        </link>
+        <updated>2021-05-21T12:16:03.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="数据库完整性">数据库完整性</h1>
+<p><strong>数据库完整性确保的是数据的正确性和相容性</strong></p>
+<ul>
+<li>防止数据库中存在不符合语义的数据，也就是防止数据库中存在不正确的数据。</li>
+<li>防范的对象：不和语义的、不正确的 <strong>数据</strong></li>
+<li>DBMS要做的
+<ul>
+<li>提供定义 完整性约束条件 的机制。</li>
+<li>提供完整性检查的方法。</li>
+<li>违约处理机制。</li>
+</ul>
+</li>
+</ul>
+<h2 id="实体完整性">实体完整性</h2>
+<h3 id="定义">定义</h3>
+<ul>
+<li>
+<p>若属性A（一个或一组属性）是基本关系R的主属性，则A不能取空值。</p>
+<p>所谓空值就是“不知道”或“不存在”或“无意义”的值。</p>
+</li>
+<li>
+<p>实体完整性规则是针对基本关系而言的。</p>
+</li>
+<li>
+<p>现实世界的实体是可以区分的，他们具有某种唯一性标识。</p>
+</li>
+<li>
+<p>相应地，关系模型中以主码作为唯一性标识。</p>
+</li>
+<li>
+<p>主码中的属性不能取空值。如果主属性取空值，就说明存在某个不可比标识的实体，与1.2相违背，因此这个规则称为实体完整性。</p>
+</li>
+</ul>
+<pre><code class="language-mysql">create table `student`(
+	Sno char(11) not null,
+    Cno char(11) not null,
+	Sname varchar(10)notnull,
+    primary key(Sno,Cno)
+); -- 表级的主键定义
+create table `Course`(
+	Cno char(11) not null primarykey,
+    Cname varchar(20)
+); -- 列级定义主键
+
+</code></pre>
+<h3 id="检查和违约处理">检查和违约处理</h3>
+<ul>
+<li>检查主码值是否唯一，如果不唯一则拒绝插入或修改</li>
+<li>检查主码的各个属性是否为空，只要有一个为空就拒绝插入或修改</li>
+</ul>
+<h2 id="参照完整性">参照完整性</h2>
+<h3 id="定义-2">定义</h3>
+<ul>
+<li>现实世界中的实体之间往往存在着某种联系，在关系模型中，实体以及实体之间的联系都是用关系来表示的，这样就自然存在着关系与关系之间的引用。</li>
+<li>参照完整性用于描述实体之间的联系。</li>
+<li>参照完整性一般是指多个实体或关系之间的关联关系。</li>
+<li>参照完整性规则就是定义外键与被参照的主键之间的引用规则。</li>
+<li>外键要么值为空要么等于其所参照的关系中的某个元组的主键值。</li>
+</ul>
+<p><strong>外键会拖垮查询效率，用程序级别实现</strong></p>
+<pre><code class="language-mysql">create table `student`(
+	Sno char(11) not null,
+    Cno char(11) not null,
+	Sname varchar(10)notnull,
+    primary key(Sno,Cno),
+    foreign key(Cno)references Course(Cno) -- 表级定义的参照完整性
+);
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>被参照表</th>
+<th>参照表</th>
+<th>违约处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>可能破坏参照完整性</td>
+<td>插入元组</td>
+<td>拒绝</td>
+</tr>
+<tr>
+<td>可能破坏参照完整性</td>
+<td>修改外键值</td>
+<td>拒绝</td>
+</tr>
+<tr>
+<td>删除元组</td>
+<td>可能破坏参照完整性</td>
+<td>拒绝/级联修改/设为控制</td>
+</tr>
+<tr>
+<td>修改主键值</td>
+<td>可能破坏参照完整性</td>
+<td>拒绝/级联修改/设为控制</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-mysql">CREATE TABLE SC
+        (Sno   CHAR(9)  NOT NULL，
+         Cno   CHAR(4)  NOT NULL，
+         Grade  SMALLINT，
+         PRIMARY KEY（Sno，Cno）， 				
+         FOREIGN KEY (Sno) REFERENCES Student(Sno) 
+		ON DELETE CASCADE     /*级联删除SC表中相应的元组*/
+                ON UPDATE CASCADE， /*级联更新SC表中相应的元组*/
+         FOREIGN KEY (Cno) REFERENCES Course(Cno) 	                    
+               ON DELETE NO ACTION 	
+               	/*当删除course 表中的元组造成了与SC表不一致时拒绝删除*/
+               ON UPDATE CASCADE   
+      			/*当更新course表中的cno时，级联更新SC表中相应的元组*/
+        )；
+</code></pre>
+<h3 id="用户定义的完整性">用户定义的完整性</h3>
+<p>**针对某一具体应用的数据必须满足的语义要求 **</p>
+<ul>
+<li>是针对语义定义的数据约束条件。</li>
+<li>实际上就是指明关系中属性的取值范围，防止属性的值与语义矛盾</li>
+<li>关系模型应提供定义和检验这类完整性的机制，以便用统一的系统方法处理它们，而不要由应用程序承担这一功能。</li>
+</ul>
+<h4 id="定义-3">定义</h4>
+<ul>
+<li>建表时
+<ul>
+<li>not null 列值非空。</li>
+<li>unique 列值唯一。</li>
+<li>check（ ）检查列值是否满足一个布尔表达式。</li>
+</ul>
+</li>
+</ul>
+<h4 id="违约处理">违约处理</h4>
+<ul>
+<li>插入元组或者修改属性值时，DBMS检查属性上的约束条件是否被满足，如果不满足则拒绝执行</li>
+</ul>
+<h3 id="完整性约束命名子句">完整性约束命名子句</h3>
+<ul>
+<li>
+<p>constaint约束</p>
+<pre><code class="language-mysql">constraint &lt;Cname&gt;
+[primary key...
+ foreign key...
+ check...]
+ 
+ CREATE TABLE Student(
+     	Sno  NUMERIC(6)
+        CONSTRAINT C1 CHECK (Sno BETWEEN 90000 AND 99999)，
+        Sname  CHAR(20)  
+        CONSTRAINT C2 NOT NULL，
+        Sage  NUMERIC(3)
+        CONSTRAINT C3 CHECK (Sage &lt; 30)，
+        Ssex  CHAR(2)
+        CONSTRAINT C4 CHECK (Ssex IN ( '男'，'女'))，
+        CONSTRAINT StudentKey PRIMARY KEY(Sno)
+ )；
+-- -----------修改约束条件
+ALTER TABLE Student
+        DROP CONSTRAINT C1;
+        ALTER TABLE Student
+        ADD CONSTRAINT C1 CHECK (Sno BETWEEN 900000 AND 999999)，
+        ALTER TABLE Student
+        DROP CONSTRAINT C3;
+        ALTER TABLE Student
+        ADD CONSTRAINT C3 CHECK (Sage &lt; 40)；
+</code></pre>
+</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[数据库安全性]]></title>
+        <id>https://caldarius.github.io/post/shu-ju-ku-an-quan-xing/</id>
+        <link href="https://caldarius.github.io/post/shu-ju-ku-an-quan-xing/">
+        </link>
+        <updated>2021-05-21T12:15:04.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="数据库安全性">数据库安全性</h1>
+<h2 id="数据库安全性-2">数据库安全性</h2>
+<h3 id="问题">问题</h3>
+<ol>
+<li>数据库的特点之一是数据共享，但是数据共享必然带来安全性问题。</li>
+<li>数据库系统中的数据共享不能是无条件的共享。</li>
+</ol>
+<h3 id="数据库安全性控制">数据库安全性控制</h3>
+<h4 id="用户表示与鉴别">用户表示与鉴别</h4>
+<p><strong>系统提供的最外层的安全保护措施</strong>。</p>
+<ul>
+<li>
+<p>用户标识</p>
+<p>系统核对口令以鉴别用户身份。为了防止口令的窃取会有各种防御措施来预防。典型的有生物识别，口令计算函数。</p>
+</li>
+</ul>
+<h4 id="存取控制">存取控制</h4>
+<p><strong>作用在DBMS级别的安全措施</strong></p>
+<ul>
+<li>定义用户权限</li>
+<li>合法权限的检查</li>
+</ul>
+<h5 id="实现方法">实现方法</h5>
+<ul>
+<li>通过SQL 的 <strong>GRANT REVOKE</strong> 语句实现。</li>
+<li>用户权限组成：
+<ul>
+<li>数据对象</li>
+<li>操作类型</li>
+</ul>
+</li>
+<li>授权：定义用户可以在哪些数据库对象上镜像哪些类型的操作</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>操作类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>模式（schema）</td>
+<td>CREATE SCHEMA</td>
+</tr>
+<tr>
+<td>基本表（table）</td>
+<td>CREATE TABLE，ALTER TABLE</td>
+</tr>
+<tr>
+<td>视图（view）</td>
+<td>CREATE VIEW</td>
+</tr>
+<tr>
+<td>索引（index'）</td>
+<td>CREATE INDEX</td>
+</tr>
+<tr>
+<td>数据（基本表和视图）</td>
+<td>SELECT，INSERT，UPDATE，DELETE，REFERENCES，ALL PRIVILEGES</td>
+</tr>
+<tr>
+<td>属性列</td>
+<td>SELECT，INSERT，UPDATE， REFERENCES，ALL PRIVILEGES</td>
+</tr>
+</tbody>
+</table>
+<h3 id="操作语句">操作语句</h3>
+<h4 id="grant">GRANT</h4>
+<p>GRANT &lt;权限&gt;[,&lt;权限&gt;]...</p>
+<p>​    [ON &lt;对象类型&gt; &lt;对象名&gt;]</p>
+<p>​    TO &lt;用户&gt;[,&lt;用户&gt;]...</p>
+<p>​    [WITH GRANT OPTION];</p>
+<h5 id="授权">授权</h5>
+<ul>
+<li>DBA。</li>
+<li>是数据库的创建者。</li>
+<li>拥有权限的用户。</li>
+</ul>
+<h5 id="接受">接受</h5>
+<ul>
+<li>一个或者多个具体的用户。</li>
+<li>PUBLIC  （全体用户）。</li>
+</ul>
+<h5 id="with-grant-option">WITH GRANT OPTION;</h5>
+<ul>
+<li>指定，可以再授予。</li>
+<li>没有，不能传播。</li>
+<li>不允许循环授权，A-&gt;B-&gt;C-&gt;A</li>
+</ul>
+<pre><code class="language-mysql">grant select,insert
+	on table `student`,`grade`
+	to `t1`,`t2`;
+	
+grant all priviliges
+	on table student,course
+	to t1,t2;
+	
+grant select
+	on table student,grade
+	to public;
+	
+grant all priviliges
+	on table student,course
+	to t1,t2
+	with grant option;
+</code></pre>
+<h4 id="revoke">REVOKE</h4>
+<p><strong>除  TO-&gt;FROM   基本语法格式与 GRANT 语句相同，不再赘述</strong></p>
+<ul>
+<li>对于权限传播的用户权限收回在FROM语句之后+“CASCADE”即可。</li>
+</ul>
+<pre><code class="language-mysql">revoke all priviliges
+	on table student
+	from t1
+	cascade
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关系数据库理论（二）]]></title>
+        <id>https://caldarius.github.io/post/guan-xi-shu-ju-ku-li-lun-er/</id>
+        <link href="https://caldarius.github.io/post/guan-xi-shu-ju-ku-li-lun-er/">
+        </link>
+        <updated>2021-05-21T12:13:38.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="关系数据库理论二">关系数据库理论（二）</h1>
+<h2 id="范式">范式</h2>
+<h3 id="定义">定义</h3>
+<ul>
+<li>范式是符合某一种级别的关系模式的集合。定义的是规范。</li>
+</ul>
+<h3 id="种类">种类</h3>
+<ul>
+<li>第一范式 (1NF)</li>
+<li>第二范式 (2NF)</li>
+<li>第三范式 (3NF)</li>
+<li>BC范式 (BCNF)</li>
+<li>……</li>
+</ul>
+<h3 id="联系">联系</h3>
+<p>低级别的范式包含高级别的范式~</p>
+<h3 id="规范化">规范化</h3>
+<p>一个低级别范式的关系模式，通过模式分解转化为若干高一级范式的关系模式的集合 的过程。</p>
+<h3 id="第一范式-1nf">第一范式 (1NF)</h3>
+<h4 id="定义-2">定义</h4>
+<p>如果一个关系模式R的所有属性都是不可分的 基本数据项，则R∈1NF。</p>
+<h4 id="意义">意义</h4>
+<ul>
+<li>第一范式是对关系模式的最起码的要求。不满 足第一范式的数据库模式不能称为关系数据库。</li>
+<li>但是满足第一范式的关系模式并不一定是一个 好的关系模式。我们需要更细致的规范。</li>
+</ul>
+<h3 id="第二范式-2nf">第二范式 (2NF)</h3>
+<h4 id="引例">引例</h4>
+<p>关系模式 SLC(Sno, Sdept, Sloc, Cno, Grade) ，Sloc为学生住处，假设每个系的学生住在同一 个地方。</p>
+<p>FD（函数依赖）：</p>
+<p>​	(Sno, Cno) f-&gt;Grade</p>
+<p>​	 Sno -&gt; Sdept</p>
+<p>​	(Sno, Cno) -&gt; Sdept</p>
+<p>​	Sno -&gt; Sloc</p>
+<p>​	(Sno, Cno) -&gt; Sloc</p>
+<p>​	Sdept -&gt; Sloc</p>
+<p><strong>SLC：</strong></p>
+<table>
+<thead>
+<tr>
+<th>Sno</th>
+<th>Sdept</th>
+<th>Sloc</th>
+<th>Cno</th>
+<th>Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="分析">分析</h5>
+<ul>
+<li>
+<p>SLC的码为(Sno, Cno)。</p>
+</li>
+<li>
+<p>非主属性Sdept和Sloc部分函数依赖于码(Sno, Cno)</p>
+</li>
+<li>
+<p>插入异常</p>
+<p>假设Sno＝0121，Sdept＝IS，Sloc＝N 的学生还未选课，因课程号是主 属性，因此该学生的信息无法插入SLC。</p>
+</li>
+<li>
+<p>删除异常</p>
+<p>假定某个学生本来只选修了3号课程这一门课。现在因身体不适，他连3 号课程也不选修了。因课程号是主属性，此操作将导致该学生信息的 整个元组都要删除。</p>
+</li>
+<li>
+<p>数据冗余度大</p>
+<p>如果一个学生选修了10门课程，那么他的Sdept和Sloc值就要重复 存储了10次。</p>
+</li>
+<li>
+<p>修改复杂</p>
+<p>如学生转系，在修改此学生元组的Sdept值的同时，还可能需 要修改住处（Sloc）。如果这个学生选修了K门课，则必须无遗 漏地修改K个元组中全部Sdept、Sloc信息。</p>
+</li>
+<li>
+<p>原因</p>
+<p>Sdept、 Sloc部分函数依赖于码。</p>
+</li>
+<li>
+<p>解决方法</p>
+<p>SLC分解为两个关系模式，以消除这些部分函数依赖。（ 关系模式分解将在（四）中详细写明 ）</p>
+<p>SC（Sno， Cno， Grade）</p>
+<p>SL（Sno， Sdept， Sloc）</p>
+</li>
+</ul>
+<h4 id="定义-3">定义</h4>
+<ul>
+<li>若关系模式R∈1NF，并且每一个非主属性都 完全函数依赖于R的码，则R∈2NF。</li>
+</ul>
+<h4 id="作用及缺陷">作用及缺陷</h4>
+<ul>
+<li>采用投影分解法将一个1NF的关系分解为多个2NF的关 系，可以在一定程度上减轻原1NF关系中存在的插入 异常、删除异常、数据冗余度大、修改复杂等问题。</li>
+<li>将一个1NF关系分解为多个2NF的关系，并不能完全消 除关系模式中的各种异常情况和数据冗余。</li>
+</ul>
+<h3 id="3nf">3NF</h3>
+<h4 id="引例-2">引例</h4>
+<ul>
+<li>
+<p>2NF关系模式SL(Sno, Sdept, Sloc)中：</p>
+<ul>
+<li>
+<p>函数依赖：</p>
+<p>Sno -&gt; Sdept</p>
+<p>Sdept -&gt; Sloc</p>
+<p>Sloc 传递函数依赖于 Sloc 。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>解决方法：</p>
+<ul>
+<li>
+<p>采用投影分解法，把SL分解为两个关系模式，以消除传递函数 依赖：</p>
+<p>SD（Sno， Sdept）</p>
+<p>DL（Sdept， Sloc）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="定义-4">定义</h4>
+<ul>
+<li>
+<p>关系模式R 中若不存在这样的码X、 属性组Y及非主属性Z（Z 不包含于 Y）, 使得X-&gt; Y，Y -&gt; Z，成 立，    Y -&gt; X，则称R ∈ 3NF。</p>
+</li>
+<li>
+<p>即：若R∈3NF，则R的每一个非主属性既不部分函数依赖于 候选码也不传递函数依赖于候选码。</p>
+<h4 id="作用及缺陷-2">作用及缺陷</h4>
+<p>将一个2NF关系分解为多个3NF的关系后，并不能完全消 除关系模式中的各种异常情况和数据冗余。</p>
+</li>
+</ul>
+<h3 id="bcnf">BCNF</h3>
+<h4 id="定义-5">定义</h4>
+<ul>
+<li>
+<p>设关系模式R∈1NF，如果对于R的每个 函数依赖X -&gt; Y，若Y不属于X，则X必含有候选码，那么 R∈BCNF。</p>
+</li>
+<li>
+<p>即：若R∈BCNF</p>
+<ul>
+<li>每一个决定属性集（因素）都包含（候选）码。</li>
+<li>R中的所有属性（主，非主属性）都完全函数依赖于码。</li>
+<li>R∈3NF.</li>
+</ul>
+</li>
+</ul>
+<h4 id="性质">性质</h4>
+<ul>
+<li>所有非主属性都完全函数依赖于每个候选码。</li>
+<li>所有主属性都完全函数依赖于每个不包含它的 候选码。</li>
+<li>没有任何属性完全函数依赖于非码的任何一组 属性</li>
+</ul>
+<h4 id="例子">例子</h4>
+<p>在关系模式STJ（S，T，J）中，S表示学生，T表示教 师，J表示课程。</p>
+<p>(S，J) -&gt; T，(S，T) -&gt; J，T -&gt; J</p>
+<p>STJ∈3NF (S，J)和(S，T)都可以作为候选码 S、T、J都是主属性</p>
+<p>STJ不属于BCNF T -&gt; J，T是决定属性集，T不是候选码</p>
+<p><strong>解决方法：将STJ分解为二个关系模式：</strong></p>
+<p>​	 <strong>ST(S，T) ∈ BCNF， TJ(T，J)∈ BCNF</strong></p>
+<h3 id="多值依赖">多值依赖</h3>
+<p>PS：多值依赖以及第四范式笔者正在寻找更恰当的描述方式，找到之后会第一时间更新。</p>
+<h3 id="第四范式">第四范式</h3>
+<h3 id="规范化基本步骤">规范化基本步骤</h3>
+<ol>
+<li>1NF  消除非主属性对码的部分函数依赖。</li>
+</ol>
+<h4 id="消除决定属性集-非码-的非平凡函数依赖">消除决定属性集 非码 的非平凡函数依赖</h4>
+<ol start="2">
+<li>2NF 消除非主属性对码的传递函数依赖。</li>
+<li>3NF 消除主属性对码的部分和传递函数依赖。</li>
+<li>BCNF 消除非平凡且非函数依赖的多值依赖。</li>
+</ol>
+<h4 id="基本思想">基本思想</h4>
+<ul>
+<li>消除不合适的数据依赖的各关系模式达到某种程度的“分 离”。</li>
+<li>采用“一事一地”的模式设计原则。</li>
+<li>所谓规范化实质上是概念的单一化。</li>
+<li>规范化程度高不等于关系模式好，在实际应用中我们常常会在实际需求与规范化中做 trade off。笔者认为，这个妥协的过程广泛地存在于工程应用中。</li>
+<li>在设计数据库模式结构时，必须对现实世界的实际情况和用 户应用需求作进一步分析，确定一个合适的、能够反映现实 世界的模式。</li>
+<li>规范化过程可以在其中任何一步终止。</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关系数据库理论（一）]]></title>
+        <id>https://caldarius.github.io/post/guan-xi-shu-ju-ku-li-lun-yi/</id>
+        <link href="https://caldarius.github.io/post/guan-xi-shu-ju-ku-li-lun-yi/">
+        </link>
+        <updated>2021-05-21T12:12:12.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="关系数据库理论一">关系数据库理论（一）</h1>
+<h2 id="一些基本概念">一些基本概念</h2>
+<h3 id="关系">关系</h3>
+<ul>
+<li>
+<p>用于描述实体、属性、实体之间的联系。</p>
+</li>
+<li>
+<p>从形式上看，它是一张二维表，是所涉及属性的笛卡尔积的一 个子集。</p>
+</li>
+</ul>
+<h3 id="关系模式">关系模式</h3>
+<ul>
+<li>用来定义关系。</li>
+<li><strong>关系数据库中的关系模式是型，而关系是值。关系模式是对关系的描写叙述。</strong></li>
+</ul>
+<h3 id="关系数据库">关系数据库</h3>
+<ul>
+<li>
+<p>基于关系模型的数据库，利用关系来描述现实世界。</p>
+</li>
+<li>
+<p>从形式上看，它由一组关系组成。（多张表组成一个数据库嘛~）</p>
+</li>
+</ul>
+<h3 id="关系数据库的模式">关系数据库的模式</h3>
+<ul>
+<li>定义这组关系的关系模式的全体。</li>
+</ul>
+<h4 id="形式化定义">形式化定义</h4>
+<p>R（U，D，DOM，F）</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R</td>
+<td>关系名,是符号化的元组语义</td>
+</tr>
+<tr>
+<td>U</td>
+<td>组成该关系的属性名的集合,一组属性</td>
+</tr>
+<tr>
+<td>D</td>
+<td>属性组U中属性所来自的域</td>
+</tr>
+<tr>
+<td>DOM</td>
+<td>属性向域的映象集合</td>
+</tr>
+<tr>
+<td>F</td>
+<td>属性间数据的依赖关系集合（关系内部属性与属性之间的一种约束关<strong>系</strong>，主要分函数依赖和多值依赖）</td>
+</tr>
+</tbody>
+</table>
+<p>由于D、DOM与模式设计关系不大，所以常常把关系模式看作一个三元组：<strong>R&lt;U,F&gt;</strong>。</p>
+<p><strong>当且仅当U上的一个关系r 满足F时，r称为关 系模式 R（U, F）的一个关系。</strong></p>
+<h3 id="数据依赖">数据依赖</h3>
+<h4 id="完整性约束的表现形式">完整性约束的表现形式</h4>
+<ul>
+<li>限定属性取值范围：例如学生成绩必须在0-100之间。</li>
+<li>定义属性值间的相互关连（主要体现于值的相等与否），这就是 数据依赖，它是数据库模式设计的关键。</li>
+</ul>
+<h4 id="数据依赖-2">数据依赖</h4>
+<ul>
+<li>是通过一个关系中属性间值的相等与否体现出来的数据间的相互关系。</li>
+<li>是现实世界属性间相互联系的抽象，是数据内在的性质 ，是语义的体现。 （一种 A-&gt;B的感觉）</li>
+<li>数据依赖的类型：
+<ul>
+<li>函数依赖（Functional Dependency，简记为FD）。</li>
+<li>多值依赖（Multivalued Dependency，简记为MVD）。</li>
+</ul>
+</li>
+</ul>
+<h2 id="问题的提出">问题的提出</h2>
+<ul>
+<li>针对具体的问题，如何构造一个适用于它的数据模式。</li>
+<li>如何进行数据库的逻辑设计？ -&gt;关系数据库的规范化理论。</li>
+</ul>
+<h3 id="示例">示例</h3>
+<h4 id="数据库描述">数据库描述</h4>
+<p>学生的学号（Sno）、所在系（Sdept）、系主任姓名 （Mname）、课程名（Cname）、 成绩（Grade）</p>
+<p>单一的关系模式 ： Student&lt;U,F&gt;</p>
+<p>U ＝｛ Sno, Sdept, Mname, Cname, Grade ｝</p>
+<table>
+<thead>
+<tr>
+<th>Sno</th>
+<th>Cname</th>
+<th>Grade</th>
+<th>Sdept</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="问题">问题</h4>
+<ul>
+<li>巨大的数据冗余。系主任系号的名字反复出现。</li>
+<li>更新异常。更新数据时，维护数据完整性代价大。</li>
+<li>插入异常。例，如果一个系刚成立，尚无学生，我们就无法把这个系及其系主 任的信息存入数据库。</li>
+<li>删除异常。如果某个系的学生全部毕业了， 我们在删除该系学生信息的 同时，把这个系及其系主任的信息也丢掉了。</li>
+</ul>
+<h4 id="原因">原因</h4>
+<ul>
+<li>由于模式中存在某些数据以来</li>
+</ul>
+<h4 id="解决">解决</h4>
+<ul>
+<li>通过分解关系模式来消除其中不合适的数据依赖。</li>
+</ul>
+<h2 id="规范化">规范化</h2>
+<h3 id="函数依赖">函数依赖</h3>
+<h4 id="定义">定义</h4>
+<p>设R(U)是一个属性集U上的关系模式，X和Y是U的子 集。若对于R(U)的任意一个可能的关系r，r中不可能存在两 个元组在X上的属性值相等， 而在Y上的属性值不等， 则 称 “X函数确定Y” 或 “Y函数依赖于X”，记作X→Y。 X称为这个函数依赖的决定属性集(Determinant)。 Y=f(x)</p>
+<p><strong>x可唯一确定y</strong></p>
+<h4 id="说明">说明</h4>
+<ul>
+<li>R的所有关系实例均要满足的约束条件。</li>
+<li>函数依赖是语义范畴的概念。只能根据数据的语义来确定函数依赖。 例如“姓名→年龄”这个函数依赖只有在不允许有同名人的条件下成立。</li>
+<li>数据库设计者可以对现实世界作强制的规定。例如规定不允许同名人 出现，函数依赖“姓名→年龄”成立。所插入的元组必须满足规定 的函数依赖，若发现有同名人存在， 则拒绝装入该元组。</li>
+</ul>
+<h3 id="平凡函数依赖与非平凡函数依赖">平凡函数依赖与非平凡函数依赖</h3>
+<p>在关系模式R(U)中，对于U的子集X和Y:</p>
+<p>​	如果X-&gt;Y，但Y 不包含于 X，则称X-&gt;Y是非平凡的函数依赖</p>
+<p>​</p>
+<p>​	若X→Y，但Y 包含于X, 则称X→Y是平凡的函数依赖</p>
+<p>在关系SC(Sno, Cno, Grade)中：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>非平凡函数依赖</td>
+<td>(Sno, Cno) → Grade</td>
+</tr>
+<tr>
+<td>平凡函数依赖</td>
+<td>(Sno, Cno) → Sno</td>
+</tr>
+<tr>
+<td>平凡函数依赖</td>
+<td>(Sno, Cno) → Cno</td>
+</tr>
+</tbody>
+</table>
+<p>易知：对于任一关系模式，平凡函数依赖都是必然成立的，它不反映新的 语义。所以我们默			认讨论非平凡函数依赖。</p>
+<h3 id="完全函数依赖于部分函数依赖">完全函数依赖于部分函数依赖</h3>
+<h4 id="定义-2">定义</h4>
+<p>在关系模式R(U)中，如果X -&gt; Y，并且对 于X的任何一个真子集X’，都有 X’ !-&gt; Y, 则称Y完全函数依赖于X。 若X→Y，但Y不完全函数依赖于X，则称Y部分 函数依赖于X。</p>
+<h4 id="示例-2">示例</h4>
+<p>在关系SC(Sno, Cno, Grade)中，：</p>
+<p>由于：Sno -&gt;Grade，Cno -&gt; Grade</p>
+<p>因此：(Sno, Cno) 函数确定 Grade，Grade 函数依赖于(Sno, Cno)</p>
+<h3 id="传递函数依赖">传递函数依赖</h3>
+<h4 id="定义-3">定义</h4>
+<p>在关系模式R(U)中，如果X-&gt;Y，Y-&gt;Z， 且Y !-&gt; X，Y-&gt;X，则称Z传递函数依赖于X。</p>
+<p>ps :  如果Y-&gt;X， 即X&lt;--&gt;Y，则Z直接依赖于X。可以双向的传递就不是传递函数依赖了。</p>
+<h4 id="示例-3">示例</h4>
+<p>在关系Std(Sno, Sdept, Mname)中：</p>
+<p>有： Sno -&gt; Sdept，Sdept -&gt; Mname</p>
+<p>​	Mname传递函数依赖于Sno。</p>
+<h2 id="码">码🐎</h2>
+<h3 id="定义-4">定义</h3>
+<p>设K为关系模式R中的属性或属性组合。若 K 函数确定 U，则K称为R的一个侯选码（Candidate Key）。 若关系模式R有多个候选码，则选定其中的一个做为主 码（Primary key）。</p>
+<h2 id="外码">外码</h2>
+<h3 id="定义-5">定义</h3>
+<p>关系模式 R 中属性或属性组 X 并非 R  的码，但 X 是另一个关系模式的码，则称 X  是R 的外部码（Foreign key）也称外码 主码又和外部码一起提供了表示关系间联系的手段。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[二进制记事]]></title>
         <id>https://caldarius.github.io/post/er-jin-zhi-ji-shi/</id>
