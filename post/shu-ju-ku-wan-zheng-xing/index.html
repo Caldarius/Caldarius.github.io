@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>数据库完整性 | Caldarius</title>
-<link rel="shortcut icon" href="https://caldarius.github.io//favicon.ico?v=1622103995807">
+<link rel="shortcut icon" href="https://caldarius.github.io//favicon.ico?v=1622104732487">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://caldarius.github.io//styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="数据库完整性 | Caldarius - Atom Feed" href="https://caldarius.github.io//atom.xml">
@@ -29,7 +29,7 @@ DBMS要做的
       <div class="main-content">
         <div class="site-header">
   <a href="https://caldarius.github.io/">
-  <img class="avatar" src="https://caldarius.github.io//images/avatar.png?v=1622103995807" alt="">
+  <img class="avatar" src="https://caldarius.github.io//images/avatar.png?v=1622104732487" alt="">
   </a>
   <h1 class="site-title">
     Caldarius
@@ -231,36 +231,34 @@ create table `Course`(
 </ul>
 <h3 id="完整性约束命名子句">完整性约束命名子句</h3>
 <ul>
-<li>
-<p>constaint约束</p>
-<pre><code class="language-mysql">constraint &lt;Cname&gt;
-[primary key...
- foreign key...
- check...]
- 
- CREATE TABLE Student(
-     	Sno  NUMERIC(6)
-        CONSTRAINT C1 CHECK (Sno BETWEEN 90000 AND 99999)，
-        Sname  CHAR(20)  
-        CONSTRAINT C2 NOT NULL，
-        Sage  NUMERIC(3)
-        CONSTRAINT C3 CHECK (Sage &lt; 30)，
-        Ssex  CHAR(2)
-        CONSTRAINT C4 CHECK (Ssex IN ( '男'，'女'))，
-        CONSTRAINT StudentKey PRIMARY KEY(Sno)
- )；
--- -----------修改约束条件
-ALTER TABLE Student
-        DROP CONSTRAINT C1;
-        ALTER TABLE Student
-        ADD CONSTRAINT C1 CHECK (Sno BETWEEN 900000 AND 999999)，
-        ALTER TABLE Student
-        DROP CONSTRAINT C3;
-        ALTER TABLE Student
-        ADD CONSTRAINT C3 CHECK (Sage &lt; 40)；
-</code></pre>
-</li>
+<li>constaint约束</li>
 </ul>
+<pre><code class="language-mysql"> constraint &lt;Cname&gt;
+ [primary key...
+  foreign key...
+  check...]
+  
+  CREATE TABLE Student(
+      	Sno  NUMERIC(6)
+         CONSTRAINT C1 CHECK (Sno BETWEEN 90000 AND 99999)，
+         Sname  CHAR(20)  
+         CONSTRAINT C2 NOT NULL，
+         Sage  NUMERIC(3)
+         CONSTRAINT C3 CHECK (Sage &lt; 30)，
+         Ssex  CHAR(2)
+         CONSTRAINT C4 CHECK (Ssex IN ( '男'，'女'))，
+         CONSTRAINT StudentKey PRIMARY KEY(Sno)
+  )；
+ -- -----------修改约束条件
+ ALTER TABLE Student
+         DROP CONSTRAINT C1;
+         ALTER TABLE Student
+         ADD CONSTRAINT C1 CHECK (Sno BETWEEN 900000 AND 999999)，
+         ALTER TABLE Student
+         DROP CONSTRAINT C3;
+         ALTER TABLE Student
+         ADD CONSTRAINT C3 CHECK (Sage &lt; 40)；
+</code></pre>
 
               </div>
               <div class="toc-container">
