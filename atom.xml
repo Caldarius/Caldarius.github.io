@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://caldarius.github.io/</id>
     <title>Caldarius</title>
-    <updated>2021-05-27T13:56:50.786Z</updated>
+    <updated>2021-05-28T11:27:32.499Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://caldarius.github.io/"/>
     <link rel="self" href="https://caldarius.github.io/atom.xml"/>
@@ -10,6 +10,416 @@
     <logo>https://caldarius.github.io/images/avatar.png</logo>
     <icon>https://caldarius.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Caldarius</rights>
+    <entry>
+        <title type="html"><![CDATA[ 关系数据库]]></title>
+        <id>https://caldarius.github.io/post/guan-xi-shu-ju-ku/</id>
+        <link href="https://caldarius.github.io/post/guan-xi-shu-ju-ku/">
+        </link>
+        <updated>2021-05-28T11:26:42.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="关系数据库">关系数据库</h1>
+<h2 id="历史">历史</h2>
+<h3 id="发展历程">发展历程</h3>
+<ul>
+<li>系统而严格地提出关系模型的是美国IBM公司的E.F.Codd</li>
+<li>1970年提出关系数据模型</li>
+<li>E.F.Codd, “A Relational Model of Data for Large Shared Data Banks”, 《Communication of the ACM》,1970</li>
+<li>之后，提出了关系代数和关系演算的概念</li>
+<li>1972年提出了关系的第一、第二、第三范式</li>
+<li>1974年提出了关系的BC范式</li>
+<li>关系数据库应用数学方法来处理数据库中的数据</li>
+<li>80年代后，关系数据库系统成为最重要、最流行的数据库系统</li>
+</ul>
+<h3 id="经典系统">经典系统</h3>
+<h4 id="典型实验系统">典型实验系统</h4>
+<ul>
+<li>
+<p>System R</p>
+</li>
+<li>
+<p>University INGRES</p>
+</li>
+</ul>
+<h4 id="典型商用系统">典型商用系统</h4>
+<ul>
+<li>ORACLE</li>
+<li>SQL Server</li>
+<li>SYBASE</li>
+<li>INFORMIX</li>
+<li>DB2</li>
+<li>INGRES</li>
+<li>MySQL</li>
+</ul>
+<h2 id="关系数据库系统">关系数据库系统</h2>
+<ul>
+<li>是支持关系模型的数据库系统,包括：
+<ul>
+<li>关系模型的组成</li>
+<li>关系数据结构</li>
+<li>关系操作集合</li>
+<li>关系完整性约束</li>
+</ul>
+</li>
+</ul>
+<h3 id="关系数据结构">关系数据结构</h3>
+<ul>
+<li>单一的数据结构----关系<br>
+现实世界的实体以及实体间的各种联系均用关系来表示</li>
+<li>数据的逻辑结构----二维表<br>
+从用户角度，关系模型中数据的逻辑结构是一张二维表。</li>
+</ul>
+<h3 id="关系操作集合">关系操作集合</h3>
+<ul>
+<li>
+<p>常用的关系操作<br>
+查询:选择、投影、连接、除、并、交、差<br>
+数据更新:插入、删除、修改</p>
+</li>
+<li>
+<p>关系操作的特点<br>
+集合操作方式，即操作的对象和结果都是集合。</p>
+</li>
+</ul>
+<h3 id="关系数据语言的种类">关系数据语言的种类</h3>
+<ul>
+<li>
+<p>关系代数语言</p>
+</li>
+<li>
+<p>用对关系的运算来表达查询要求,典型代表：ISBL</p>
+</li>
+<li>
+<p>关系演算语言：用谓词来表达查询要求</p>
+</li>
+<li>
+<p>元组关系演算语言--谓词变元的基本对象是元组变量,典型代表：APLHA, QUEL</p>
+</li>
+<li>
+<p>域关系演算语言--谓词变元的基本对象是域变量,典型代表：QBE</p>
+</li>
+<li>
+<p>具有关系代数和关系演算双重特点的语言：SQL</p>
+</li>
+</ul>
+<h3 id="关系数据语言的特点">关系数据语言的特点</h3>
+<ul>
+<li>关系语言是一种高度非过程化的语言</li>
+<li>存取路径的选择由DBMS的优化机制来完成</li>
+<li>用户不必用循环结构就可以完成数据操作</li>
+<li>能够嵌入高级语言中使用</li>
+<li>关系代数、元组关系演算和域关系演算三种语言在表达能力上完全等价</li>
+</ul>
+<h3 id="关系的三类完整性约束">关系的三类完整性约束</h3>
+<ul>
+<li>实体完整性，通常由关系系统自动支持</li>
+<li>参照完整性早期系统不支持，目前大型系统能自动支持</li>
+<li>用户定义的完整性反映应用领域需要遵循的约束条件，体现了具体领域中的语义约束，用户定义后由系统支持</li>
+</ul>
+<h2 id="关系模型">关系模型</h2>
+<ul>
+<li>
+<p>关系模型建立在集合代数的基础上</p>
+<p>关系<br>
+关系模式<br>
+关系数据库</p>
+</li>
+</ul>
+<h3 id="基本概念">基本概念</h3>
+<h4 id="域">域</h4>
+<p>域（Domain）:域是一组具有相同数据类型的值的集合。例:<br>
+整数<br>
+实数<br>
+介于某个取值范围的整数<br>
+长度指定长度的字符串集合<br>
+{‘男’，‘女’}<br>
+介于某个取值范围的日期</p>
+<h4 id="笛卡尔积">笛卡尔积</h4>
+<p>笛卡尔积（Cartesian Product）<br>
+给定一组域D1，D2，…，Dn，这些域中可以有相同的。D1，D2，…，Dn的笛卡尔积为：<br>
+D1×D2×…×Dn＝｛(d1，d2，…，dn)｜diDi，i＝1，2，…，n｝<br>
+所有域的所有取值的一个组合不能重复</p>
+<p>例  给出三个域：<br>
+D1=SUPERVISOR ={ 张清玫，刘逸 }<br>
+D2=SPECIALITY={计算机专业，信息专业}<br>
+D3=POSTGRADUATE={李勇，刘晨，王敏}</p>
+<p>则D1，D2，D3的笛卡尔积为：<br>
+D1×D2×D3 ＝<br>
+｛(张清玫,计算机专业,李勇),(张清玫,计算机专业,刘晨)，<br>
+(张清玫，计算机专业,王敏),(张清玫,信息专业,李勇)，<br>
+(张清玫，信息专业，刘晨),(张清玫,信息专业,王敏)，<br>
+(刘逸，计算机专业，李勇),(刘逸,计算机专业,刘晨)，<br>
+(刘逸，计算机专业，王敏),(刘逸,信息专业,李勇)，<br>
+(刘逸，信息专业，刘晨),(刘逸,信息专业,王敏) ｝</p>
+<h4 id="元组tuple">元组（Tuple）</h4>
+<p>笛卡尔积中每一个元素（d1，d2，…，dn）叫作一个n元组（n-tuple）或简称元组。</p>
+<p>元组集合的结构<br>
+属性构成；属性来自的域；属性与域之间的映象关系<br>
+元组语义以及完整性约束条件。</p>
+<h4 id="分量component">分量（Component）</h4>
+<p>笛卡尔积元素（d1，d2，…，dn）中的每一个值di叫作一个分量。</p>
+<h4 id="基数cardinal-number">基数（Cardinal number）</h4>
+<p>若Di（i＝1，2，…，n）为有限集，其基数为mi（i＝1，2，…，n），则D1×D2×…×Dn的基数M为：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mo>=</mo><munderover><mo>∏</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>m</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">M = \prod_{i=1}^{n}m_i
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∏</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">m</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>在上例中，基数：2×2×3＝12，即D1×D2×D3共有2×2×3＝12个元组</p>
+<h4 id="笛卡尔积的表示方法">笛卡尔积的表示方法</h4>
+<p>笛卡尔积可表示为一个二维表。表中的每行对应一个元组，表中的每列对应一个域。</p>
+<h4 id="关系relation">关系（Relation）</h4>
+<ul>
+<li>
+<p>D1×D2×…×Dn的子集叫作在域D1，D2，…，Dn上的关系，表示为  R（D1，D2，…，Dn）<br>
+R：关系名<br>
+n：关系的目或度（Degree）</p>
+</li>
+<li>
+<p>形式化定义</p>
+<p>R（U，D，DOM，F）</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R</td>
+<td>关系名,是符号化的元组语义</td>
+</tr>
+<tr>
+<td>U</td>
+<td>组成该关系的属性名的集合,一组属性</td>
+</tr>
+<tr>
+<td>D</td>
+<td>属性组U中属性所来自的域</td>
+</tr>
+<tr>
+<td>DOM</td>
+<td>属性向域的映象集合</td>
+</tr>
+<tr>
+<td>F</td>
+<td>属性间数据的依赖关系集合（关系内部属性与属性之间的一种约束关<strong>系</strong>，主要分函数依赖和多值依赖）</td>
+</tr>
+</tbody>
+</table>
+<p>由于D、DOM与模式设计关系不大，所以常常把关系模式看作一个三元组：<strong>R&lt;U,F&gt;</strong>。</p>
+<p><strong>当且仅当U上的一个关系r 满足F时，r称为关 系模式 R（U, F）的一个关系。</strong></p>
+</li>
+<li>
+<p><strong>注意：</strong><br>
+关系是笛卡尔积的有限子集。无限关系在数据库系统中是无意义的。<br>
+由于笛卡尔积不满足交换律，即<br>
+(d1，d2，…，dn )≠(d2，d1，…，dn )<br>
+但关系满足交换律，即<br>
+(d1，d2 ，…，di ，dj ，…，dn）=（d1，d2 ，…，dj，di ，…，dn）<br>
+（i，j = 1，2，…，n）<br>
+<strong>解决方法：为关系的每个列附加一个属性名以取消关系元组的有序性</strong></p>
+</li>
+</ul>
+<p>​	例  在表2.1 的笛卡尔积中取出有实际意义的元组来构造关系关系：SAP(SUPERVISOR，SPECIALITY，POSTGRADUATE)关系名，属性名假设：导师与专业：1:1，导师与研究生：1:n于是：SAP关系可以包含三个元组<br>
+​     ｛ (张清玫，信息专业，李勇)，</p>
+<p>​		 (张清玫，信息专业，刘晨)，<br>
+​       (刘逸，信息专业，王敏)  }</p>
+<ul>
+<li>
+<p>元组<br>
+关系中的每个元素是关系中的元组，通常用t表示。</p>
+</li>
+<li>
+<p>单元关系与二元关系<br>
+当n=1时，称该关系为单元关系（Unary relation）。<br>
+当n=2时，称该关系为二元关系（Binary relation）。</p>
+</li>
+<li>
+<p>关系的表示<br>
+关系也是一个二维表，表的每行对应一个元组，表的每列对应一个域。</p>
+</li>
+<li>
+<p>属性<br>
+关系中不同列可以对应相同的域，为了区分，必须对每列起一个名字，称为属性（Attribute）。n目关系必有n个属性。</p>
+</li>
+<li>
+<p>码</p>
+<ul>
+<li>
+<p>候选码（Candidate key）:若关系中的某一属性组的值能唯一地标识一个元组，则称该属性组为候选码.在最简单的情况下，候选码只包含一个属性。</p>
+</li>
+<li>
+<p>全码（All-key）：在最极端的情况下，关系模式的所有属性组是这个关系模式的候选码，称为全码（All-key）</p>
+</li>
+<li>
+<p>主码:若一个关系有多个候选码，则选定其中一个为主码（Primary key）<br>
+候选码的诸属性称为主属性（Prime attribute）。<br>
+不包含在任何侯选码中的属性称为非码属性（Non-key attribute）</p>
+</li>
+</ul>
+</li>
+<li>
+<p>三类关系</p>
+<ul>
+<li>基本关系（基本表或基表）:实际存在的表，是实际存储数据的逻辑表示</li>
+<li>查询表:查询结果对应的表</li>
+<li>视图表:由基本表或其他视图表导出的表，是虚表，不对应实际存储的数据。</li>
+</ul>
+</li>
+<li>
+<p>基本关系的性质</p>
+<ul>
+<li>
+<p>列是同质的。（Homogeneous）<br>
+每一列中的分量是同一类型的数据，来自同一个域</p>
+</li>
+<li>
+<p>不同的列可出自同一个域。<br>
+其中的每一列称为一个属性,不同的属性要给予不同的属性名</p>
+<p>上例中也可以只给出两个域：<br>
+人（PERSON）=张清玫，刘逸，李勇，刘晨，王敏<br>
+专业（SPECIALITY）=计算机专业，信息专业<br>
+SAP关系的导师属性和研究生属性都从PERSON域中取值<br>
+为避免混淆，必须给这两个属性取不同的属性名，而不能直接使<br>
+用域名。<br>
+例如定义:<br>
+导师属性名为SUPERVISOR-PERSON（或SUPERVISOR）<br>
+研究生属性名为POSTGRADUATE-PERSON（或POSTGRADUATE）</p>
+</li>
+<li>
+<p>列的顺序无所谓，列的次序可以任意交换<br>
+遵循这一性质的数据库产品(如ORACLE)，增加新属性时，永远是插至最后一列.但也有许多关系数据库产品没有遵循这一性质，例如FoxPro仍然区分了属性顺序</p>
+</li>
+<li>
+<p>任意两个元组不能完全相同，由笛卡尔积的性质决定。但许多关系数据库产品没有遵循这一性质。<br>
+例如:<br>
+Oracle，FoxPro等都允许关系表中存在两个完全相同<br>
+的元组，除非用户特别定义了相应的约束条件。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="关系模式">关系模式</h4>
+<ul>
+<li>
+<p>关系模式与关系<br>
+关系模式（Relation Schema）是型，对关系的描述；   静态的、稳定的</p>
+</li>
+<li>
+<p>关系是值关系模式在某一时刻的状态或内容。<br>
+动态的、随时间不断变化的关系模式是对关系的描述</p>
+</li>
+<li>
+<p>关系模式和关系往往统称为关系，通过上下文加以区别</p>
+<p>例如：学生表（学号，姓名，班级，学院）-&gt; 关系模式</p>
+<p>​			（201903010xxx,Caldarius，计科19-3,计科院）-&gt;关系</p>
+</li>
+</ul>
+<h2 id="关系数据库-2">关系数据库</h2>
+<h3 id="定义">定义</h3>
+<ul>
+<li>在一个给定的应用领域中，所有实体及实体之间联系的关系的集合构成一个关系数据库。</li>
+</ul>
+<h3 id="关系数据库的型与值">关系数据库的型与值</h3>
+<p>关系数据库也有型和值之分</p>
+<ul>
+<li>关系数据库的型称为关系数据库模式，是对关系数据库的描述。</li>
+<li>关系数据库的值是这些关系模式在某一时刻对应的关系的集合，通常简称为关系数据库。</li>
+</ul>
+<h3 id="完整性约束">完整性约束</h3>
+<ul>
+<li>关系模型的完整性规则是对关系的某种约束条件。</li>
+<li>关系模型中三类完整性约束：
+<ul>
+<li>实体完整性</li>
+<li>参照完整性</li>
+<li>用户定义的完整性</li>
+</ul>
+</li>
+<li>实体完整性和参照完整性是关系模型必须满足的完整性约束条件，被称作是关系的两个不变性，应该由关系系统自动支持。</li>
+</ul>
+<h4 id="实体完整性规则entity-integrity">实体完整性规则（Entity Integrity）</h4>
+<ul>
+<li>
+<p>若属性A是基本关系R的主属性，则属性A不能取空值</p>
+<p>例 SAP(SUPERVISOR，SPECIALITY，POSTGRADUATE)</p>
+<p>POSTGRADUATE属性为主码（假设研究生不会重名），则其不能取空值.</p>
+</li>
+<li>
+<p>关系模型必须遵守实体完整性规则的原因：</p>
+<ul>
+<li>实体完整性规则是针对基本关系而言的。一个基本表通常对应现实世界的一个实体集或多对多联系。</li>
+<li>现实世界中的实体和实体间的联系都是可区分的，即它们具有某种唯一性标识。 <strong>相应地，关系模型中以主码作为唯一性标识。</strong>(2)</li>
+</ul>
+</li>
+<li>
+<p>主码中的属性即主属性不能取空值。<br>
+空值就是“不知道”或“无意义”的值。<br>
+主属性取空值，就说明存在某个不可标识的实体，即存在不可区分的实体，这与第（2）点相矛盾，因此这个规则称为实体完整性。<br>
+注意：<br>
+实体完整性规则规定基本关系的所有主属性都不能取空值<br>
+例<br>
+选修（学号，课程号，成绩）<br>
+“学号、课程号”为主码，则两个属性都不能取空值。</p>
+</li>
+</ul>
+<h4 id="参照完整性">参照完整性</h4>
+<ul>
+<li>
+<p>关系间的引用<br>
+在关系模型中实体及实体间的联系都是用关系来描述的，因此可能存在着关系与关系间的引用。</p>
+<p>例1 :<br>
+学生实体、专业实体以及专业与学生间的一对多联系<br>
+　学生（学号，姓名，性别，专业号，年龄）<br>
+　    专业（专业号，专业名）</p>
+</li>
+</ul>
+<p>​	例1 :<br>
+学生实体、专业实体以及专业与学生间的一对多联系<br>
+　学生（学号，姓名，性别，专业号，年龄）<br>
+　  专业（专业号，专业名）</p>
+<p>专业（专业号，专业名）</p>
+<p>学生、课程、学生与课程之间的多对多联系<br>
+学生（学号，姓名，性别，专业号，年龄）<br>
+课程（课程号，课程名，学分）<br>
+选修（学号，课程号，成绩）</p>
+<h5 id="外码foreign-key和参照关系referencing-relation">外码（Foreign Key）和参照关系（Referencing Relation）</h5>
+<ul>
+<li>
+<p>设F是基本关系R的一个或一组属性，但不是关系R的码。如果F与基本关系S的主码Ks相对应，则称F是基本关系R的外码，基本关系R称为参照关系（Referencing Relation），基本关系S称为被参照关系（ReferencedRelation）或目标关系（Target Relation）。</p>
+</li>
+<li>
+<p>Tips：</p>
+<ul>
+<li>关系R和S不一定是不同的关系</li>
+<li>目标关系S的主码Ks 和参照关系的外码F必须定义在同一个（或一组）域上</li>
+<li>外码并不一定要与相应的主码同名。当外码与相应的主码属于不同关系时，往往   取相同的名字，以便于识别</li>
+</ul>
+</li>
+<li>
+<p>例：<br>
+学生关系中每个元组的“专业号”属性只取下面两类值：<br>
+（1）空值，表示尚未给该学生分配专业<br>
+（2）非空值，这时该值必须是专业关系中某个元组的“专业号”值，表示该学生不可能分配到一个不存在的专业中</p>
+<p>选修（学号，课程号，成绩）<br>
+“学号”和“课程号”是选修关系中的主属性，按照实体完整性和参照完整性规则，它们只能取相应被参照关系中已经存在的主码值  学生(学号，姓名，性别，专业号，年龄，班长)<br>
+“班长”属性值可以取两类值：<br>
+1）空值，表示该学生所在班级尚未选出班长，或该学生本人即是班长；<br>
+2）非空值，这时该值必须是本关系中某个元组的学号值</p>
+</li>
+</ul>
+<h4 id="用户定义的完整性">用户定义的完整性</h4>
+<ul>
+<li>
+<p>用户定义的完整性是针对某一具体关系数据库的约束条件，反映某一具体应用所涉及的数据必须满足的<strong>语义要求</strong>。</p>
+</li>
+<li>
+<p>关系模型应提供定义和检验这类完整性的机制，以便用统一的系统的方法处理它们，而不要由应用程序承担这一功能。</p>
+<p>例: 课程(课程号，课程名，学分)<br>
+“课程名”属性必须取唯一值<br>
+非主属性“课程名”也不能取空值<br>
+“学分”属性只能取值{1，2，3，4}</p>
+</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[数据库概述]]></title>
         <id>https://caldarius.github.io/post/shu-ju-ku-gai-shu/</id>
