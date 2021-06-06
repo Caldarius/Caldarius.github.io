@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://caldarius.github.io/</id>
     <title>Caldarius</title>
-    <updated>2021-06-05T08:13:49.100Z</updated>
+    <updated>2021-06-06T04:28:35.742Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://caldarius.github.io/"/>
     <link rel="self" href="https://caldarius.github.io/atom.xml"/>
@@ -10,6 +10,207 @@
     <logo>https://caldarius.github.io/images/avatar.png</logo>
     <icon>https://caldarius.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, Caldarius</rights>
+    <entry>
+        <title type="html"><![CDATA[简介]]></title>
+        <id>https://caldarius.github.io/post/jian-jie/</id>
+        <link href="https://caldarius.github.io/post/jian-jie/">
+        </link>
+        <updated>2021-06-06T04:23:16.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="绪论">绪论</h2>
+<h3 id="因特网internet">因特网（Internet）</h3>
+<ul>
+<li>由全球所有上网的计算机互联形成的最大的计算机网络，是一个国际网。一般提到的网络多指Internet。</li>
+<li>网络一般指计算机网络，优势也指“三网”，即“电信网络”，“有线电视网络”和“计算机网络”</li>
+<li>计算机网络：资质计算机的互相联合。</li>
+<li>因特网的橙果，好的体系结构固然重要，但是另一个重要因素是<strong>它的许多功能是由通用计算机上运行的软件实现的！</strong></li>
+</ul>
+<h3 id="网络性能指标">网络性能指标</h3>
+<ul>
+<li>
+<p>速率：</p>
+<ul>
+<li>比特（bit）是计算机中的数据量的单位，也是信息论中使用的信息量的单位。</li>
+<li>bit来源于“binary digit”，意思是一个“二进制数字”，一次一个比特就是二进制数字中的一个1或0。</li>
+<li>速率即<strong>透明传输</strong>（data rate）或比特率（bit rate）是计算机网络中最重要的一个性能指标。速率的单位是b/s，或kb/s,Mb/s,Gb/s等。</li>
+</ul>
+</li>
+<li>
+<p>带宽（bandwidth）：</p>
+<ul>
+<li>本来是指信号具有的频带宽度，单位是赫兹。</li>
+<li>现在“带宽”是数字信道所能传送的“最高数据率”的同意语，单位是“比特每秒”，或者b/s.</li>
+<li>带宽的单位是十进制的</li>
+</ul>
+</li>
+</ul>
+<figure data-type="image" tabindex="1"><img src="https://caldarius.github.io//post-images/1622953536372.png" alt="" loading="lazy"></figure>
+<ul>
+<li>
+<p>吞吐量（throughput）</p>
+<ul>
+<li>表示在单位时间内通过某个网络（信道、接口）的数据量。</li>
+<li>吞吐量梗经常地用于对现实世界中地网络地一种测量，以遍知道实际上到底有多少数据量能够通过网络。</li>
+<li>吞吐量受网络带宽或者网络的额定速率的限制。</li>
+</ul>
+</li>
+<li>
+<p>时延（delay/latency）</p>
+<ul>
+<li><strong>传输时延</strong>（发送时延）发送数据时，数据块从节点进入到传输媒体所需要的时间。</li>
+<li>也就是从发送数据帧的第一个比特算起，到该帧的最后一个比特发送完毕所需的时间。</li>
+</ul>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">发</mi><mi mathvariant="normal">送</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">延</mi><mo>=</mo><mspace width="1em"/><mfrac><mrow><mi mathvariant="normal">数</mi><mi mathvariant="normal">据</mi><mi mathvariant="normal">块</mi><mi mathvariant="normal">长</mi><mi mathvariant="normal">度</mi><mi mathvariant="normal">（</mi><mi mathvariant="normal">比</mi><mi mathvariant="normal">特</mi><mi mathvariant="normal">）</mi></mrow><mrow><mi mathvariant="normal">信</mi><mi mathvariant="normal">道</mi><mi mathvariant="normal">带</mi><mi mathvariant="normal">宽</mi><mi mathvariant="normal">（</mi><mi mathvariant="normal">比</mi><mi mathvariant="normal">特</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">秒</mi><mi mathvariant="normal">）</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">发送时延 = \quad {数据块长度（比特）\over 信道带宽（比特/秒）}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mord cjk_fallback">发</span><span class="mord cjk_fallback">送</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">延</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace" style="margin-right:1em;"></span></span><span class="base"><span class="strut" style="height:1.613em;vertical-align:-0.936em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.677em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">信</span><span class="mord cjk_fallback">道</span><span class="mord cjk_fallback">带</span><span class="mord cjk_fallback">宽</span><span class="mord cjk_fallback">（</span><span class="mord cjk_fallback">比</span><span class="mord cjk_fallback">特</span><span class="mord">/</span><span class="mord cjk_fallback">秒</span><span class="mord cjk_fallback">）</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">据</span><span class="mord cjk_fallback">块</span><span class="mord cjk_fallback">长</span><span class="mord cjk_fallback">度</span><span class="mord cjk_fallback">（</span><span class="mord cjk_fallback">比</span><span class="mord cjk_fallback">特</span><span class="mord cjk_fallback">）</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span></p>
+<ul>
+<li><strong>传播时延</strong>，电磁波在信道中需要传播一定的距离而花费的时间。</li>
+<li>信号传输速率（发送速率）和信道上的传播速率是完全不同的概念。</li>
+</ul>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">传</mi><mi mathvariant="normal">播</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">延</mi><mo>=</mo><mspace width="1em"/><mfrac><mrow><mi mathvariant="normal">信</mi><mi mathvariant="normal">道</mi><mi mathvariant="normal">长</mi><mi mathvariant="normal">度</mi><mi mathvariant="normal">（</mi><mi mathvariant="normal">米</mi><mi mathvariant="normal">）</mi></mrow><mrow><mi mathvariant="normal">信</mi><mi mathvariant="normal">道</mi><mi mathvariant="normal">在</mi><mi mathvariant="normal">信</mi><mi mathvariant="normal">道</mi><mi mathvariant="normal">上</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">传</mi><mi mathvariant="normal">播</mi><mi mathvariant="normal">速</mi><mi mathvariant="normal">率</mi><mi mathvariant="normal">（</mi><mi mathvariant="normal">米</mi><mi mathvariant="normal">/</mi><mi mathvariant="normal">秒</mi><mi mathvariant="normal">）</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">传播时延 = \quad{信道长度（米）\over 信道在信道上的传播速率（米/秒） }
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mord cjk_fallback">传</span><span class="mord cjk_fallback">播</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">延</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace" style="margin-right:1em;"></span></span><span class="base"><span class="strut" style="height:1.613em;vertical-align:-0.936em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.677em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">信</span><span class="mord cjk_fallback">道</span><span class="mord cjk_fallback">在</span><span class="mord cjk_fallback">信</span><span class="mord cjk_fallback">道</span><span class="mord cjk_fallback">上</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">传</span><span class="mord cjk_fallback">播</span><span class="mord cjk_fallback">速</span><span class="mord cjk_fallback">率</span><span class="mord cjk_fallback">（</span><span class="mord cjk_fallback">米</span><span class="mord">/</span><span class="mord cjk_fallback">秒</span><span class="mord cjk_fallback">）</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">信</span><span class="mord cjk_fallback">道</span><span class="mord cjk_fallback">长</span><span class="mord cjk_fallback">度</span><span class="mord cjk_fallback">（</span><span class="mord cjk_fallback">米</span><span class="mord cjk_fallback">）</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span></p>
+<ul>
+<li>这个速度不一定是光速，受到多方面限制</li>
+<li><strong>处理时延</strong>，交换节点为存储转发而进行一些必要的处理所花费的时间。</li>
+<li><strong>排队时延</strong>节点缓存队列中分组排队所经历的时延。</li>
+<li>排队时延的长短往往取决于网络中当时的通信量。</li>
+</ul>
+<p><strong>总时延 = 发送时延+传播时延+处理时延+排队时延</strong></p>
+</li>
+</ul>
+<h3 id="利用率">利用率</h3>
+<ul>
+<li><strong>信道利用率</strong>，指出某信道由百分之几的<strong>时间</strong>是被利用的。完全空闲的信道的利用率是零。</li>
+<li>网络利用率则是全网络的信道利用率的加权平均值。</li>
+</ul>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mo>=</mo><mspace width="1em"/><mfrac><msub><mi>D</mi><mn>0</mn></msub><mrow><mn>1</mn><mo>−</mo><mi>U</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">D = \quad {D_0 \over1-U}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace" style="margin-right:1em;"></span></span><span class="base"><span class="strut" style="height:2.1296600000000003em;vertical-align:-0.7693300000000001em;"></span><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.36033em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693300000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span></p>
+<p>$D_0 $表示网络空闲时的时延。</p>
+<p>D表示网络当前的时延。</p>
+<p>U是网络的利用率，数值在0~1之间。</p>
+<figure data-type="image" tabindex="2"><img src="https://caldarius.github.io//post-images/1622953546802.png" alt="" loading="lazy"></figure>
+<h3 id="交换switching">交换（Switching）</h3>
+<ul>
+<li>交换的含义是**“转接”**——把一条电话线转接到另一条电话线，使她们连通起来。</li>
+<li>从通信资源动态分配的角度来看，“交换”就是按照某种方式<strong>动态地分配</strong>传输线路的资源。</li>
+</ul>
+<figure data-type="image" tabindex="3"><img src="https://caldarius.github.io//post-images/1622953563804.png" alt="" loading="lazy"></figure>
+<h3 id="分组交换的优点">分组交换的优点</h3>
+<ul>
+<li>高效。动态分配传输带宽，对通信链路是逐段占用。</li>
+<li>灵活。以分组为传送单位和查找路由。</li>
+<li>迅速。不必建立连接就能向其他主机发送分组。</li>
+<li>可靠。保证可靠性的网络协议；分布式路由选择协议使得网络有很好的生存性。</li>
+</ul>
+<h3 id="分组交换的问题">分组交换的问题</h3>
+<ul>
+<li>分组在各节点存储转发是需要排队，这会造成一定的时延。</li>
+<li>分组必须携带的首部也造成了一定的开销。<br>
+<img src="https://caldarius.github.io//post-images/1622953574846.png" alt="" loading="lazy"></li>
+</ul>
+<h3 id="体系结构architecture">体系结构（architecture）</h3>
+<ul>
+<li>计算机网络各层及其协议的集合。是为进行网络中的数据交换而建立的规则、标准或协定。协议是构成网络系统各层的抽象对象。</li>
+</ul>
+<h3 id="分层">分层</h3>
+<ul>
+<li>将庞大而复杂的问题，转化为若干较小的局部问题，而这些较小的局部问题就比较易于研究和处理。</li>
+<li>服务接口（service interface）
+<ul>
+<li>定义本地对象可以在协议上执行的操作</li>
+</ul>
+</li>
+<li>对等接口（peer-to-peer）
+<ul>
+<li>定义在实现通信服务的协议，对等实体之间交换的消息格式和含义。</li>
+</ul>
+</li>
+</ul>
+<h3 id="osi和tcpip">OSI和TCP/IP</h3>
+<h4 id="osi">OSI</h4>
+<ul>
+<li>只要遵循OSI标准，一个系统就可以和位于世界上任何地方的、也遵循这同意标准的其他任何系统进行通信。</li>
+<li>在市场化方面OSI却失败了
+<ul>
+<li>OSI的专家们在完成OSI标准时没有商业驱动力；</li>
+<li>OSI的协议实现起来过分复杂，且运行效率很低；</li>
+<li>OSI标准制定的周期太长，因而使得按OSI标准生产的设备无法及时进入市场；</li>
+<li>OSI的层次划分不太合理，有些功能在多个层次中重复出现。</li>
+</ul>
+</li>
+</ul>
+<figure data-type="image" tabindex="4"><img src="https://caldarius.github.io//post-images/1622953590904.png" alt="" loading="lazy"></figure>
+<h3 id="五层协议结构教学模型">五层协议结构（教学模型）</h3>
+<p><img src="https://caldarius.github.io//post-images/1622953611624.png" alt="" loading="lazy"><br>
+<img src="https://caldarius.github.io//post-images/1622953618803.png" alt="" loading="lazy"></p>
+<p>​</p>
+<ul>
+<li><strong>应用层</strong> ：为特定应用程序提供数据传输服务，例如 HTTP、DNS 等。数据单位为<strong>报文</strong>。</li>
+<li><strong>传输层</strong> ：为进程提供通用数据传输服务。由于应用层协议很多，定义通用的传输层协议就可以支持不断增多的应用层协议。运输层包括两种协议：<strong>传输控制协议 TCP，提供面向连接、可靠的数据传输服务，数据单位为报文段；用户数据报协议 UDP，提供无连接、尽最大努力的数据传输服务，数据单位为用户数据报。</strong> TCP 主要提供完整性服务，UDP 主要提供及时性服务。</li>
+<li><strong>网络层</strong> ：为主机提供数据传输服务。而传输层协议是为主机中的进程提供数据传输服务。网络层把传输层传递下来的报文段或者用户数据报封装成分组。</li>
+<li><strong>数据链路层</strong> ：网络层针对的还是主机之间的数据传输服务，而主机之间可以有很多链路，链路层协议就是为同一链路的主机提供数据传输服务。数据链路层把网络层传下来的分组封装成帧。</li>
+<li><strong>物理层</strong> ：考虑的是怎样在传输媒体上传输数据比特流，而不是指具体的传输媒体。物理层的作用是尽可能屏蔽传输媒体和通信手段的差异，使数据链路层感觉不到这些差异。</li>
+<li><strong>表示层</strong> ：数据压缩、加密以及数据描述，这使得应用程序不必关心在各台主机中数据内部格式不同的问题。</li>
+<li><strong>会话层</strong> ：建立及管理会话。</li>
+</ul>
+<p>五层协议没有表示层和会话层，而是将这些功能留给应用程序开发者处理。</p>
+<h3 id="数据在各层之间的传递过程">数据在各层之间的传递过程</h3>
+<p>在向下的过程中，需要添加下层协议所需要的首部或者尾部，而在向上的过程中不断拆开首部和尾部。</p>
+<p>路由器只有下面三层协议，因为路由器位于网络核心中，不需要为进程或者应用程序提供服务，因此也就不需要传输层和应用层。</p>
+<figure data-type="image" tabindex="5"><img src="https://caldarius.github.io//post-images/1622953655965.png" alt="" loading="lazy"></figure>
+<h3 id="试从多个方面比较电路交换-报文交换和分组交换的主要优缺点">试从多个方面比较电路交换、报文交换和分组交换的主要优缺点。</h3>
+<ul>
+<li>电路交换：端对端通信质量因约定了通信资源获得可靠保障，对连续传送大量数据效率 高。</li>
+<li>报文交换：无须预约传输带宽，动态逐段利用传输带宽对突发式数据通信效率高，通信迅 速。</li>
+<li>分组交换：具有报文交换之高效、迅速的要点，且各分组小，路由灵活，网络生存性能 好。</li>
+</ul>
+<h3 id="论述具有五层协议的网络体系结构的要点包括各层的主要功能">论述具有五层协议的网络体系结构的要点，包括各层的主要功能。</h3>
+<ul>
+<li>综合 OSI 和 TCP/IP 的优点，采用一种原理体系结构。</li>
+<li>物理层 物理层的任务就是 透明地传送比特流。（注意：传递信息的物理媒体，如双绞线、同轴电缆、光缆等，是在物理层的下面， 当做第 0 层。） 物理层还要确定连接电缆插头的定义及连接法。</li>
+<li>数据链路层 数据链路层的任务是在两个 相邻结点间的线路上无差错地传送以帧（frame）为单位的数据。每一帧包括数据和必要的控制信息。</li>
+<li>网络层 网络层的任务就是要选择合适的路由，使 发送站的运输层所传下来的分组能够 正确无误地按照地址找到目的站，并交付给目的站的运输层。</li>
+<li>运输层 运输层的任务是向上一层的进行通 信的两个进程之间提供一个可靠的端到端服务，使它们看不见运输层以下的数据通信的细节。</li>
+<li>应用层 应 用层直接为用户的应用进程提供服务。</li>
+</ul>
+<h3 id="试解释-everything-over-ip-和-ip-over-everthing-的含义">试解释 everything over IP 和 IP over everthing 的含义</h3>
+<ul>
+<li>TCP/IP 协议可以为各式各样的应用提供服务 （所谓的 everything over ip）</li>
+<li>允许 IP 协议在各式 各样的网络构成的互联网上运行（所谓的 ip over everything）</li>
+</ul>
+<h3 id="协议与服务有何区别有何关系">协议与服务有何区别？有何关系？</h3>
+<ul>
+<li>网络协议：为进行网络中的数据交换而建立的规则、标准或 约定。由以下三个要素组成：
+<ul>
+<li>语法：即数据与控制信息的结构或格式。</li>
+<li>语义：即需要发出何种控制信息，完成何种动作以及做出何种响应。</li>
+<li>同步：即事件实现顺序的详细说明。协议是控制两个对等实体进行通信的规则的集合。在协议的控 制下，两个对等实体间的通信使得本层能够向上一层提供服务，而要实现本层协议，还需要使用下面一层 提供服务。</li>
+</ul>
+</li>
+</ul>
+<h3 id="协议和服务的概念的区分">协议和服务的概念的区分</h3>
+<ul>
+<li>协议的实现保证了能够向上一层提供服务。本层的服务用户只能看见服务而无法看见下面的协议。下 面的协议对上面的服务用户是透明的。</li>
+<li>协议是“水平的”，即协议是控制两个对等实体进行通信的规则。但服务是“垂直的”，即服务是由下层 通过层间接口向上层提供的。上层使用所提供的服务必须与下层交换一些命令，这些命令在 OSI 中称为服 务原语。</li>
+</ul>
+<h3 id="网络体系结构为什么要采用分层次的结构">网络体系结构为什么要采用分层次的结构？</h3>
+<ul>
+<li>分层的好处：
+<ul>
+<li>各层之间是独立的。某一层可以使用其下一层提供的服务而不需要知道服务是如何 实现的。</li>
+<li>灵活性好。当某一层发生变化时，只要其接口关系不变，则这层以上或以下的各层均不受影 响。</li>
+<li>结构上可分割开。各层可以采用最合适的技术来实现④易于实现和维护。</li>
+<li>能促进标准化工作。</li>
+<li>与分层体系结构的思想相似的日常生活有邮政系统，物流系统。</li>
+</ul>
+</li>
+</ul>
+<h3 id="试从多个方面比较电路交换-报文交换和分组交换的主要优缺点-2">试从多个方面比较电路交换、报文交换和分组交换的主要优缺点。</h3>
+<ul>
+<li>电路交换：端对端通信质量因约定了通信资源获得可靠保障，对连续传送大量数据效率 高。</li>
+<li>报文交换：无须预约传输带宽，动态逐段利用传输带宽对突发式数据通信效率高，通信迅 速。</li>
+<li>分组交换：具有报文交换之高效、迅速的要点，且各分组小，路由灵活，网络生存性能 好。</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[全频带阻塞干扰（CN）]]></title>
         <id>https://caldarius.github.io/post/quan-pin-dai-zu-sai-gan-rao-cn/</id>
@@ -2145,305 +2346,6 @@ grant all priviliges
 <h2 id="外码">外码</h2>
 <h3 id="定义-5">定义</h3>
 <p>关系模式 R 中属性或属性组 X 并非 R  的码，但 X 是另一个关系模式的码，则称 X  是R 的外部码（Foreign key）也称外码 主码又和外部码一起提供了表示关系间联系的手段。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[二进制记事]]></title>
-        <id>https://caldarius.github.io/post/er-jin-zhi-ji-shi/</id>
-        <link href="https://caldarius.github.io/post/er-jin-zhi-ji-shi/">
-        </link>
-        <updated>2021-05-09T12:49:47.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="计算机与二进制">计算机与二进制</h2>
-<p>在研究中……~</p>
-<h2 id="简述">简述</h2>
-<ul>
-<li>采用了0、1两个基本数字符号。</li>
-<li>进位规律——“逢二进一”</li>
-<li>位权——“2的整数次幂”</li>
-</ul>
-<h3 id="优点">优点</h3>
-<ul>
-<li>运算简单、物理实现容易、存储和传送方便可靠。</li>
-<li>在数字系统中普遍存在。</li>
-</ul>
-<h3 id="缺陷">缺陷</h3>
-<ul>
-<li>数字位数太长，字符单调，书写记忆以和阅读不方便。所以常常采用八进制或者十六进制来作为二进制数的缩写。</li>
-</ul>
-<h3 id="十六-十-八-二-对照表">十六、十、八、二、对照表</h3>
-<table>
-<thead>
-<tr>
-<th>十进制</th>
-<th>二进制</th>
-<th>八进制</th>
-<th>十六进制</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>0000</td>
-<td>00</td>
-<td>0</td>
-</tr>
-<tr>
-<td>1</td>
-<td>0001</td>
-<td>01</td>
-<td>1</td>
-</tr>
-<tr>
-<td>2</td>
-<td>0010</td>
-<td>02</td>
-<td>2</td>
-</tr>
-<tr>
-<td>3</td>
-<td>0011</td>
-<td>03</td>
-<td>3</td>
-</tr>
-<tr>
-<td>4</td>
-<td>0100</td>
-<td>04</td>
-<td>4</td>
-</tr>
-<tr>
-<td>5</td>
-<td>0101</td>
-<td>05</td>
-<td>5</td>
-</tr>
-<tr>
-<td>6</td>
-<td>0110</td>
-<td>06</td>
-<td>6</td>
-</tr>
-<tr>
-<td>7</td>
-<td>0111</td>
-<td>07</td>
-<td>7</td>
-</tr>
-<tr>
-<td>8</td>
-<td>1000</td>
-<td>10</td>
-<td>8</td>
-</tr>
-<tr>
-<td>9</td>
-<td>1001</td>
-<td>11</td>
-<td>9</td>
-</tr>
-<tr>
-<td>10</td>
-<td>1010</td>
-<td>12</td>
-<td>A</td>
-</tr>
-<tr>
-<td>11</td>
-<td>1011</td>
-<td>13</td>
-<td>B</td>
-</tr>
-<tr>
-<td>12</td>
-<td>1100</td>
-<td>14</td>
-<td>C</td>
-</tr>
-<tr>
-<td>13</td>
-<td>1101</td>
-<td>15</td>
-<td>D</td>
-</tr>
-<tr>
-<td>14</td>
-<td>1110</td>
-<td>16</td>
-<td>E</td>
-</tr>
-<tr>
-<td>15</td>
-<td>111</td>
-<td>17</td>
-<td>F</td>
-</tr>
-</tbody>
-</table>
-<h3 id="数值转换">数值转换</h3>
-<h4 id="多项式替代法">多项式替代法</h4>
-<ul>
-<li>将二进制表示数按位权展开，并运用十进制运算法则计算，所得结果即为对应十进制数。可推广到n进制转m进制。</li>
-</ul>
-<h3 id="基数乘除法">基数乘除法</h3>
-<ul>
-<li>
-<p>整数转换——“除二取余”。</p>
-</li>
-<li>
-<p>小数转换——“乘二取整”</p>
-<ul>
-<li>
-<p>例如：</p>
-<p>0.625 * 2 = 1.250</p>
-<p>0.250*2 = 0.500</p>
-<p>0.500*2 = 1.000</p>
-<p>将所得个位自上而下写出即可</p>
-<p>0.625 =  0.101（二进制）</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="二进制与八进制">二进制与八进制</h3>
-<h4 id="2-8">2-&gt;8</h4>
-<p>以小数点为界，分别往高、低每三位一组，不足三位补0；</p>
-<h4 id="8-2">8-&gt;2</h4>
-<p>将美味八进制用三位二进制数表示，小数点位置保持不变。</p>
-<h3 id="2-1616-2懂得都懂~">2-&gt;16/16-&gt;2懂得都懂~</h3>
-<h2 id="加减乘除">加减乘除</h2>
-<h2 id="原反补">原反补</h2>
-<h3 id="原码">原码</h3>
-<ul>
-<li>符号位用0表示正，1表示负；数值位保持不变。</li>
-</ul>
-<h4 id="小数原码">小数原码</h4>
-<p>原个位用作符号位。</p>
-<p>例如：</p>
-<p>​		X1 = 0.10，原码：0.10</p>
-<p>​		X2 = -0.10，原码：1.10</p>
-<ul>
-<li>
-<p>符号位的0/1代表着“负号”的有无。</p>
-<h4 id="整数原码">整数原码</h4>
-</li>
-</ul>
-<p>在首位之前增加一位符号位</p>
-<p>例如：</p>
-<p>​		X1 = 101，原码：0101</p>
-<p>​		X2 = -101，原码：1101</p>
-<h4 id="优点-2">优点</h4>
-<ul>
-<li>简单易懂，求取方便。</li>
-</ul>
-<h4 id="缺点">缺点</h4>
-<ul>
-<li>加减运算不方便。</li>
-<li>当两数加减运算时，要根据运算以及参加运算的两个数的符号来确定是加还是减；</li>
-<li>如果做减法，首先要根据两数的大小来确定减数和被减数，以及运算结果的符号。</li>
-<li>综上所述，运算较为复杂。</li>
-</ul>
-<h3 id="反码">反码</h3>
-<ul>
-<li>符号位：用0表示正，1表示负；</li>
-<li>数值位：
-<ul>
-<li>整数的反码与原码数值位相同；</li>
-<li>负数的反码是原码数值位按位取反。</li>
-</ul>
-</li>
-</ul>
-<h4 id="优点-3">优点</h4>
-<ul>
-<li>
-<p>采用反码进行加减运算时，无论进行两数相加还是两数相减，均可通过加法实现。</p>
-</li>
-<li>
-<p>运算时，符号位和数值位一样参加运算。当符号位产生进位时，应该将进位加到运算结果的最低位，得到运算结果。</p>
-</li>
-<li>
-<p>[X1+X2]反 = [X1]反 + [X2]反</p>
-</li>
-<li>
-<p>[X1-X2]反 = [X1]反 + [-X2]反 (运算时将符号位取反即可)</p>
-<p>例如：</p>
-<p>​		X1 = +0.1110 X2 = +0.0101</p>
-<p>​		X1-X2 = 0.1110+1.1010 = 0.1001</p>
-</li>
-</ul>
-<h3 id="补码">补码</h3>
-<ul>
-<li>符号位：用0表示正，1表示负；</li>
-<li>数值位：
-<ul>
-<li>整数的反码与原码数值位相同；</li>
-<li>负数的反码是原码数值位按位取反，末位+1。</li>
-</ul>
-</li>
-</ul>
-<h4 id="优点-4">优点</h4>
-<ul>
-<li>
-<p>补码优势与反码相同。</p>
-</li>
-<li>
-<p>运算时，符号位和数值位一样参加运算。当符号位产生进位时，应去掉进位，得到运算结果。</p>
-</li>
-<li>
-<p>补码还原真值时，对数值位取反+1。</p>
-</li>
-</ul>
-<h2 id="bcd码binary-coded-decimal">BCD码（Binary Coded Decimal）</h2>
-<p>用四位二进制代码对十进制数字符号进行编码——二—十进制代码。</p>
-<p>BCD码并不是二进制数，而是采用二进制编码的十进制数。</p>
-<h3 id="8421">8421</h3>
-<ul>
-<li>是用4位二进制码表示一位十进制字符的一种有权码，4位二进制码从高位至低位的权依次为23、22、21、20，即为8、4、2、1,故称为8421码</li>
-<li>按8421码编码的0～9与用4位二进制数表示的0～9完全一样。所以，8421码是一种人机联系时广泛使用的中间形式。</li>
-</ul>
-<h4 id="注意">注意</h4>
-<ul>
-<li>8421码中不允许出现1010～1111六种组合(因为没有十进制数字符号与其对应)。</li>
-<li>十进制数字符号的8421码与<strong>相应ASCII码</strong>的低四位相同，这一特点有利于简化输入输出过程中BCD码与字符代码的转换。</li>
-</ul>
-<h3 id="2421">2421</h3>
-<ul>
-<li>
-<p>2421码: 是用4位二进制码表示一位十进制字符的一种有权码，4位二进制码从高位至低位的权依次为2、4、2、1,故称为2421码。</p>
-</li>
-<li>
-<p>若一个十进制字符X的2421码为a3 a2 a1 a0，则该字符的值为：</p>
-<p>X = 2a3 + 4a2 + 2a1 + 1a0</p>
-</li>
-<li>
-<p>2421码与十进制数之间的转换同样是按位进行的，例如，<br>
-(258)10 = (0010 1011 1110)2421码<br>
-(0010 0001 1110 1011)2421码 = (2185)10</p>
-</li>
-</ul>
-<h4 id="注意-2">注意</h4>
-<ul>
-<li>
-<p>2421码不具备单值性。例如，0101和1011都对应十进制数字5。为了与十进制字符一一对应，2421码不允许出现0101～1010的6种状态。</p>
-</li>
-<li>
-<p>2421码是一种对9的自补代码。即一个数的2421码只要自身按位变反，便可得到该数对9的补数的2421码。</p>
-<p>0100-&gt;1011 (4-&gt;5)</p>
-</li>
-</ul>
-<h3 id="余三">余三</h3>
-<ul>
-<li>是由8421码加上0011形成的一种无权码，由于它的每个字符编码比相应8421码多3，故称为余3码。</li>
-</ul>
-<h4 id="注意-3">注意</h4>
-<ul>
-<li>余3码中不允许出现0000、0001、0010、1101、1110和1111六种状态。</li>
-<li>余3码与十进制数进行转换时，每位十进制数字的编码都应余3。（转换之后或者之前先 &quot;-3&quot;）</li>
-<li>余3码也是一种对9的自补代码。</li>
-<li>两个余3码表示的十进制数字相加时，能产生正确进位信号，但对“和”必须修正。
-<ul>
-<li>修正的方法是：如果有进位，则结果加3；如果无进位，则结果减3。</li>
-</ul>
-</li>
-</ul>
 ]]></content>
     </entry>
 </feed>
