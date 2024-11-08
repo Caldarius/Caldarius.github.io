@@ -1,0 +1,266 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BeanFactory和FactoryBean | Caldarius</title>
+<link rel="shortcut icon" href="https://caldarius.github.io//favicon.ico?v=1731045355487">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://caldarius.github.io//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="BeanFactory和FactoryBean | Caldarius - Atom Feed" href="https://caldarius.github.io//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+BeanFactory是Bean容器。FactoryBean是创建Bean对象的工厂。
+
+BeanFactory
+Spring 包含并管理应用对象的配置和生命周期，在这个意义上它是一种用于承载对象的容器，你可以配置你的每个 Bean 对象..." />
+    <meta name="keywords" content="读书笔记,Spring" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://caldarius.github.io/">
+  <img class="avatar" src="https://caldarius.github.io//images/avatar.png?v=1731045355487" alt="">
+  </a>
+  <h1 class="site-title">
+    Caldarius
+  </h1>
+  <p class="site-description">
+    世界上只有一种英雄主义,就是看清生活的真相之后依然热爱生活。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              BeanFactory和FactoryBean
+            </h2>
+            <div class="post-info">
+              <span>
+                2024-11-07
+              </span>
+              <span>
+                7 min read
+              </span>
+              
+                <a href="https://caldarius.github.io/tag/notes/" class="post-tag">
+                  # 读书笔记
+                </a>
+              
+                <a href="https://caldarius.github.io/tag/spring/" class="post-tag">
+                  # Spring
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://caldarius.github.io//post-images/beanfactory-and-factorybean.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <blockquote>
+<p>BeanFactory是Bean容器。FactoryBean是创建Bean对象的工厂。</p>
+</blockquote>
+<h2 id="beanfactory">BeanFactory</h2>
+<p>Spring 包含并管理应用对象的配置和生命周期，在这个意义上它是一种用于承载对象的容器，你可以配置你的每个 Bean 对象是如何被创建的，这些 Bean 可以创建一个单独的实例或者每次需要时都生成一个新的实例，以及它们是如何相互关联构建和使用的。</p>
+<p>如果一个 Bean 对象交给 Spring 容器管理，那么这个 Bean 对象就应该以类似零件的方式被拆解后存放到 Bean 的定义中，这样相当于一种把对象解耦的操作，可以由 Spring 更加容易的管理，就像处理循环依赖等操作。</p>
+<p><code>BeanFactory</code>从命名上看是一个生产Bean对象的工厂，作为Spring中容器，最重要的作用是让用户程序员获取到容器中的对象。</p>
+<p>BeanFactory只是个接口，并不是IOC容器的具体实现，所以Spring容器给出了很多种实现，如 <strong>DefaultListableBeanFactory</strong>、<strong>XmlBeanFactory</strong>、<strong>ApplicationContext</strong>等，其中XmlBeanFactory就是常用的一个，该实现将以XML方式描述组成应用的对象及对象间的依赖关系。</p>
+<p>源码：</p>
+<pre><code class="language-java">public interface BeanFactory {
+	//对FactoryBean的转义定义，因为如果使用bean的名字检索FactoryBean得到的对象是工厂生成的对象，
+	//如果需要得到工厂本身，需要转义
+	String FACTORY_BEAN_PREFIX = &quot;&amp;&quot;;
+
+	//根据bean的名字，获取在IOC容器中得到bean实例
+	Object getBean(String name) throws BeansException;
+
+	//根据bean的名字和Class类型来得到bean实例，增加了类型安全验证机制。
+	&lt;T&gt; T getBean(String name, @Nullable Class&lt;T&gt; requiredType) throws BeansException;
+
+	Object getBean(String name, Object... args) throws BeansException;
+
+	&lt;T&gt; T getBean(Class&lt;T&gt; requiredType) throws BeansException;
+
+	&lt;T&gt; T getBean(Class&lt;T&gt; requiredType, Object... args) throws BeansException;
+
+	//提供对bean的检索，看看是否在IOC容器有这个名字的bean
+	boolean containsBean(String name);
+
+	//根据bean名字得到bean实例，并同时判断这个bean是不是单例
+	boolean isSingleton(String name) throws NoSuchBeanDefinitionException;
+
+	boolean isPrototype(String name) throws NoSuchBeanDefinitionException;
+
+	boolean isTypeMatch(String name, ResolvableType typeToMatch) throws NoSuchBeanDefinitionException;
+
+	boolean isTypeMatch(String name, @Nullable Class&lt;?&gt; typeToMatch) throws NoSuchBeanDefinitionException;
+
+	//得到bean实例的Class类型
+	@Nullable
+	Class&lt;?&gt; getType(String name) throws NoSuchBeanDefinitionException;
+
+	//得到bean的别名，如果根据别名检索，那么其原名也会被检索出来
+	String[] getAliases(String name);
+}
+</code></pre>
+<p>从源码看，BeanFactory主要提供了获取Bean对象，判断Bean对象是否存在，判断Bean对象是否为单例对象，获取Bean的Class对象，获取Bean的别名等基本方法。</p>
+<h1 id="factorybean">FactoryBean</h1>
+<p>顾名思义，FactoryBean是一个Bean，但又不仅仅是一个Bean，同时它还是一个Factory。</p>
+<p>在Spring中，所有的Bean都是由BeanFactory（也就是IOC容器）来进行管理的。但对FactoryBean而言，<strong>这个FactoryBean不是简单的Bean，而是一个能生产Bean的Bean</strong>,它的实现与设计模式中的工厂模式相似。</p>
+<p>在Spring 框架下，我们使用的 MyBatis 框架中，它的核心作用是可以满足用户不需要实现 Dao 接口类，就可以通过 xml 或者注解配置的方式完成对数据库执行 CRUD 操作，那么在实现这样的 ORM 框架中，是怎么把一个数据库操作的 Bean 对象交给 Spring 管理的呢。</p>
+<p>因为我们在使用 Spring、MyBatis 框架的时候都可以知道，并没有手动的去创建任何操作数据库的 Bean 对象，有的仅仅是一个接口定义，而这个接口定义竟然可以被注入到其他需要使用 Dao 的属性中去了，那么这一过程最核心待解决的问题，就是需要完成把复杂且以代理方式动态变化的对象，注册到 Spring 容器中。而为了满足这样的一个扩展组件开发的需求，就需要我们在现有手写的 Spring 框架中，添加这一能力。</p>
+<p>关于提供一个能让使用者定义复杂的 Bean 对象，功能点非常不错，意义也非常大，因为这样做了之后 Spring 的生态种子孵化箱就此提供了，谁家的框架都可以在此标准上完成自己服务的接入。</p>
+<p>但这样的功能逻辑设计上并不复杂，因为整个 Spring 框架在开发的过程中就已经提供了各项扩展能力的<code>接茬</code>，你只需要在合适的位置提供一个接茬的处理接口调用和相应的功能逻辑实现即可，像这里的目标实现就是对外提供一个可以二次从 FactoryBean 的 getObject 方法中获取对象的功能即可，这样所有实现此接口的对象类，就可以扩充自己的对象功能了。<em>MyBatis 就是实现了一个 MapperFactoryBean 类，在 getObject 方法中提供 SqlSession 对执行 CRUD 方法的操作</em> 整体设计结构如下图：</p>
+<p>一般情况下，Spring通过反射机制利用的class属性指定实现类实例化Bean。至于为什么会有FactoryBean？原因有两个：</p>
+<p>1、在某些情况下，实例化Bean过程比较复杂，如果按照传统的方式，则需要在中提供大量的配置信息。配置方式的灵活性是受限的，这时采用编码的方式可能会得到一个简单的方案。Spring为此提供了一个<code>org.springframework.bean.factory.FactoryBean</code>的工厂类接口，用户可以通过实现该接口定制实例化Bean的逻辑。FactoryBean接口对于Spring框架来说占用重要的地位，Spring自身就提供了70多个FactoryBean的实现。它们隐藏了实例化一些复杂Bean的细节，给上层应用带来了便利。</p>
+<p>2、由于第三方库不能直接注册到spring容器，于是可以实现<code>org.springframework.bean.factory.FactoryBean</code>接口，然后给出自己对象的实例化代码即可。</p>
+<pre><code class="language-java">public interface FactoryBean&lt;T&gt; {
+	//从工厂中获取bean【这个方法是FactoryBean的核心】
+	@Nullable
+	T getObject() throws Exception;
+	
+	//获取Bean工厂创建的对象的类型【注意这个方法主要作用是：该方法返回的类型是在ioc容器中getbean所匹配的类型】
+	@Nullable
+	Class&lt;?&gt; getObjectType();
+	
+	//Bean工厂创建的对象是否是单例模式
+	default boolean isSingleton() {
+		return true;
+	}
+}
+</code></pre>
+<p>FactoryBean提供了获取Bean，获取创建Bean对象的类型，判断创建Bean是否为单例接口。<br>
+<a href="https://bugstack.cn/md/spring/develop-spring/2021-06-30-%E7%AC%AC10%E7%AB%A0%EF%BC%9A%E6%A8%AA%E5%88%80%E8%B7%83%E9%A9%AC%EF%BC%8C%E5%85%B3%E4%BA%8EBean%E5%AF%B9%E8%B1%A1%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%BB%A5%E5%8F%8AFactoryBean%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%92%8C%E4%BD%BF%E7%94%A8.html">第10章：对象作用域和FactoryBean | 小傅哥 bugstack 虫洞栈</a>中的图示：<br>
+<img src="https://caldarius.github.io//post-images/1730983057422.png" alt="" loading="lazy"></p>
+<p>createBean 执行对象创建、属性填充、依赖加载、前置后置处理、初始化等操作后，就要开始做执行判断整个对象是否是一个 FactoryBean 对象，如果是这样的对象，就需要再继续执行获取 FactoryBean 具体对象中的 <code>getObject</code> 对象了。整个 getBean 过程中都会新增一个单例类型的判断<code>factory.isSingleton()</code>，用于决定是否使用内存存放对象信息。</p>
+<p>以上是我在学习Spring过程中了解到的二者的区别。</p>
+<blockquote>
+<p>建议大家有时间学习下源码，手写一个简单的框架，对了解基本原理很有帮助。</p>
+</blockquote>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#beanfactory">BeanFactory</a></li>
+</ul>
+</li>
+<li><a href="#factorybean">FactoryBean</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://caldarius.github.io/post/th-problems-to-bugs/">
+              <h3 class="post-title">
+                导致并发Bug的三个问题和解决方案
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://caldarius.github.io//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
